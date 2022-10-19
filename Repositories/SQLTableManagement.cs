@@ -10,7 +10,7 @@ namespace Geonote.Repositories
 
         }
         
-        static void CreateTable(SQLiteConnection conn, string Createsql)
+        public static void CreateTable(SQLiteConnection conn, string Createsql)
         {
 
             SQLiteCommand sqlite_cmd = conn.CreateCommand();
@@ -18,15 +18,15 @@ namespace Geonote.Repositories
             sqlite_cmd.ExecuteNonQuery();
         }
 
-        static void InsertData(SQLiteConnection conn, string tableName, string columnNames, string values)
+        public static void InsertData(SQLiteConnection conn, string tableName, string columnNames, string values)
         {
             SQLiteCommand sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = $"INSERT INTO {tableName} ({columnNames}) VALUES({values}); ";
+            sqlite_cmd.CommandText = $"INSERT INTO {tableName} ({columnNames}) VALUES({values}); "; //the strings columnNames and values (and smth else?) should be replaces by an object (class?)
             sqlite_cmd.ExecuteNonQuery();
 
         }
 
-        static void ReadData(SQLiteConnection conn, string tableName)
+        public static void ReadData(SQLiteConnection conn, string tableName)
         {
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
