@@ -10,13 +10,12 @@ namespace Geonote.Repositories
 
         }
 
-        static SQLiteConnection CreateConnection()
+       public static SQLiteConnection CreateConnection()
         {
 
-            SQLiteConnection sqlite_conn;
-            // Create a new database connection:
-            sqlite_conn = new SQLiteConnection("Data Source=database.db; Version = 3; New = True; Compress = True; ");
-         // Open the connection:
+            // TT: Create a new database connection:
+            SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=database.db; Version = 3; New = True; Compress = True; ");
+         // TT: Open the connection:
          try
             {
                 sqlite_conn.Open();
