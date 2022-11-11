@@ -1,6 +1,6 @@
 ﻿namespace Geonote.Repositories
 {
-    public class ErrandsRepository
+    public class ErrandRepository
     {
         private static readonly string stringErrand = "Errand";
         
