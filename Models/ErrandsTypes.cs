@@ -3,10 +3,13 @@ namespace Geonote.Models
 {
     public class ErrandsTypes
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public bool recurring { get; set; }
-        public bool justHint { get; set; }
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public bool Recurring { get; set; }
+
+        public bool JustHint { get; set; }
 
         public ErrandsTypes()
         {
