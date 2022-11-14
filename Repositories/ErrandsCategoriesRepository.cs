@@ -8,7 +8,7 @@ namespace Geonote.Repositories
         public static void AddNewErrandCategory(string categoryName)
         {
             var id = Guid.NewGuid();   
-            SQLTableManagement.InsertData(ErrandCategory, "ID, Name", $"\" {id}\", \"{categoryName}\"");
+            SQLTableManagement.InsertData(ErrandCategory, "Id, Name", $"\" {id}\", \"{categoryName}\"");
         }
         public ErrandsCategoriesRepository()
         {
