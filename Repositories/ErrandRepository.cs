@@ -7,8 +7,8 @@
         public static void AddNewErrand(string errandName, string categorieId, string locationId, string placeId)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData("Errand", "ID, Name, CategorieId, LocationId, PlaceId", 
-                                          $"\" {id}\", \"{errandName}\", \"{categorieId}\", \"{locationId}\", \"{placeId}\"");
+            SQLTableManagement.InsertData(stringErrand, "Id, Name, CategorieId, LocationId, PlaceId", 
+                                          $"\"{id}\", \"{errandName}\", \"{categorieId}\", \"{locationId}\", \"{placeId}\"");
         }
 
     }
