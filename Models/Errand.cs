@@ -6,11 +6,10 @@
         
         public string Name { get; set; }
         
-        public string CategorieId { get; set; }
+        public ErrandsCategory Category { get; set; }
         
-        public string LocationId { get; set; }
-        
-        public string PlaceId { get; set; }
+        public Location Location { get; set; }
+
 
         public Errand()
         {

@@ -28,7 +28,7 @@ namespace Geonote.Repositories
         {
             if (_conn == null)
             {
-                _conn = SqliteConnect.CreateConnection();
+                _conn = SQLiteConnect.CreateConnection();
             }
             if (_conn.State == System.Data.ConnectionState.Closed)
             {

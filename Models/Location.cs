@@ -4,8 +4,8 @@ namespace Geonote.Models
     {
         public string Id { get; set; }
         
-        public string Name { get; set; }
-        
+        public Place Place { get; set; }
+
         public string Longitude { get; set; }
         
         public string Latitude { get; set; }
