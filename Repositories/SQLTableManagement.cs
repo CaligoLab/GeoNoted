@@ -7,7 +7,7 @@ namespace Geonote.Repositories
         public static void CreateTable(string Createsql)
         {
 
-            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            SQLiteCommand sqlite_cmd = SQLiteConnect.GetSQLiteConnection().CreateCommand();
             sqlite_cmd.CommandText = Createsql;
             sqlite_cmd.ExecuteNonQuery();
 
@@ -15,7 +15,7 @@ namespace Geonote.Repositories
 
         public static void InsertData(string tableName, string columnNames, string values)
         {
-            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            SQLiteCommand sqlite_cmd = SQLiteConnect.GetSQLiteConnection().CreateCommand();
             sqlite_cmd.CommandText = $"INSERT INTO {tableName} ({columnNames}) VALUES({values}); ";
             sqlite_cmd.ExecuteNonQuery();
 
@@ -23,7 +23,7 @@ namespace Geonote.Repositories
 
         public static void UpdateData(string tableName, string setValues, string clause)
         {
-            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            SQLiteCommand sqlite_cmd = SQLiteConnect.GetSQLiteConnection().CreateCommand();
             sqlite_cmd.CommandText = $"UPDATE {tableName} SET {setValues} WHERE {clause}; ";
             sqlite_cmd.ExecuteNonQuery();
 
@@ -31,7 +31,7 @@ namespace Geonote.Repositories
 
         public static void DeleteData(string tableName, string clause)
         {
-            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            SQLiteCommand sqlite_cmd = SQLiteConnect.GetSQLiteConnection().CreateCommand();
             sqlite_cmd.CommandText = $"DELETE FROM {tableName} WHERE {clause}; ";
             sqlite_cmd.ExecuteNonQuery();
 
@@ -39,7 +39,7 @@ namespace Geonote.Repositories
 
         public static SQLiteDataReader ReadData(string tableName, string? clause)
         {
-            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            SQLiteCommand sqlite_cmd = SQLiteConnect.GetSQLiteConnection().CreateCommand();
             if (clause == null)
             {
                 sqlite_cmd.CommandText = $"SELECT * FROM {tableName}";
@@ -55,7 +55,7 @@ namespace Geonote.Repositories
 
         public static SQLiteDataReader ReadCustomData(string customSelectStatement)
         {
-            SQLiteCommand sqliteCommand = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            SQLiteCommand sqliteCommand = SQLiteConnect.GetSQLiteConnection().CreateCommand();
             sqliteCommand.CommandText = customSelectStatement;
             return sqliteCommand.ExecuteReader();
         }
