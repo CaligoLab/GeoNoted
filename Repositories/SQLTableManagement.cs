@@ -4,50 +4,62 @@ namespace Geonote.Repositories
 {
     public class SQLTableManagement
     {
-        public static SQLiteConnection conn;
-        public SQLTableManagement()
-        {
-
-        }
-        
         public static void CreateTable(string Createsql)
         {
 
-            SQLiteCommand sqlite_cmd = GetSQLiteConnection().CreateCommand();
+            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
             sqlite_cmd.CommandText = Createsql;
             sqlite_cmd.ExecuteNonQuery();
+
         }
 
         public static void InsertData(string tableName, string columnNames, string values)
         {
-            SQLiteCommand sqlite_cmd = GetSQLiteConnection().CreateCommand();
-            sqlite_cmd.CommandText = $"INSERT INTO {tableName} ({columnNames}) VALUES({values}); "; //TA: the strings columnNames and values (and smth else?) should be replaces by an object (class?)
+            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            sqlite_cmd.CommandText = $"INSERT INTO {tableName} ({columnNames}) VALUES({values}); ";
             sqlite_cmd.ExecuteNonQuery();
 
         }
 
-        public static void ReadData(string tableName)
+        public static void UpdateData(string tableName, string setValues, string clause)
         {
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
-            sqlite_cmd = GetSQLiteConnection().CreateCommand();
-            sqlite_cmd.CommandText = $"SELECT * FROM {tableName}";
+            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            sqlite_cmd.CommandText = $"UPDATE {tableName} SET {setValues} WHERE {clause}; ";
+            sqlite_cmd.ExecuteNonQuery();
 
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            while (sqlite_datareader.Read())
+        }
+
+        public static void DeleteData(string tableName, string clause)
+        {
+            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            sqlite_cmd.CommandText = $"DELETE FROM {tableName} WHERE {clause}; ";
+            sqlite_cmd.ExecuteNonQuery();
+
+        }
+
+        public static SQLiteDataReader ReadData(string tableName, string? clause)
+        {
+            SQLiteCommand sqlite_cmd = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            if (clause == null)
             {
-                string myreader = sqlite_datareader.GetString(0);
-                Console.WriteLine(myreader);
+                sqlite_cmd.CommandText = $"SELECT * FROM {tableName}";
             }
-            GetSQLiteConnection().Close();
+            else
+            {
+                sqlite_cmd.CommandText = $"SELECT * FROM {tableName} WHERE {clause}";
+
+            }
+            return sqlite_cmd.ExecuteReader();
+            //GetSQLiteConnection().Close();
         }
 
-        private static SQLiteConnection GetSQLiteConnection()
+        public static SQLiteDataReader ReadCustomData(string customSelectStatement)
         {
-            if(conn == null)
-            { conn = SQLiteConnect.CreateConnection();
-            }
-            return conn;
+            SQLiteCommand sqliteCommand = SqliteConnect.GetSQLiteConnection().CreateCommand();
+            sqliteCommand.CommandText = customSelectStatement;
+            return sqliteCommand.ExecuteReader();
         }
+
+
     }
 }
