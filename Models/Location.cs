@@ -4,7 +4,7 @@ namespace Geonote.Models
     {
         public string Id { get; set; }
         
-        public Place Place { get; set; }
+        public List<Place> Places { get; set; }
 
         public string Longitude { get; set; }
         
@@ -12,7 +12,7 @@ namespace Geonote.Models
 
         public Location()
         {
-
+            Places = new List<Place>();
         }
     }
 }
