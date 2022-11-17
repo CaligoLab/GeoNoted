@@ -18,6 +18,7 @@ namespace Geonote.Repositories
 
 
             SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20), Name VARCHAR(200))");
+            SQLTableManagement.CreateTable("CREATE TABLE Category (Id VARCHAR(20), Name VARCHAR(200))");
         }
     }
 }
