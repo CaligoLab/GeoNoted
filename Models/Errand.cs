@@ -12,7 +12,7 @@ namespace Geonote.Models
         
         public ErrandsCategory? Category { get; set; }
         
-        public Location? Locations { get; set; }
+        public Location? Location { get; set; }
 
 
         public Errand()

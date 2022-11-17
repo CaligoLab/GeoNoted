@@ -17,7 +17,8 @@ namespace Geonote.Repositories
             SQLTableManagement.CreateTable("CREATE TABLE UsefulLink (SEQ INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Id VARCHAR(20), SequenceNum INT, Name TEXT NOT NULL, Address VARCHAR(200), GeonoteItemID VARCHAR(20))"); //TA: same - the last one is to connect the link to a specific item. Does it work for one-to-many? - Seems like not - We need another linking structure
 
 
-            SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20), Name VARCHAR(200))");
+            SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20), Name VARCHAR(200), CategoryId VARCHAR(20), LocationId VARCHAR(20))");
+            SQLTableManagement.CreateTable("CREATE TABLE Category (Id VARCHAR(20), Name VARCHAR(200))");
         }
     }
 }
