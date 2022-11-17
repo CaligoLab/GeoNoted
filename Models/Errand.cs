@@ -8,11 +8,11 @@ namespace Geonote.Models
         
         public string Name { get; set; }
 
-        public List<Item> ItemsList { get; set; }
+        public List<Item>? ItemsList { get; set; }
         
-        public ErrandsCategory Category { get; set; }
+        public ErrandsCategory? Category { get; set; }
         
-        public Location Locations { get; set; }
+        public Location? Locations { get; set; }
 
 
         public Errand()
