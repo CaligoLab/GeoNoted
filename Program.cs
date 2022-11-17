@@ -35,7 +35,7 @@ Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries");
 Geonote.Repositories.ErrandsCategoriesRepository.AddNewErrandCategory("grosseries");
 
 */
-//
+SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20), Name VARCHAR(200), CategoryId VARCHAR(20), LocationId VARCHAR(20))");
 
 
 
