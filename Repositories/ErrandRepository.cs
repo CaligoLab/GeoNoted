@@ -7,11 +7,11 @@ namespace Geonote.Repositories
     {
         private static readonly string stringErrand = "Errand";
         
-        public static void AddNewErrand(string errandName, ErrandsCategory categorie, Location location, Item itemsList)
+        public static void AddNewErrand(string errandName)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData(stringErrand, "Id, Name, Category, ItemsList, Location", 
-                                          $"\"{id}\", \"{errandName}\", \"{categorie}\", \"{itemsList}\", \"{location}\"");
+            SQLTableManagement.InsertData(stringErrand, "Id, Name", 
+                                          $"\"{id}\", \"{errandName}\"");
         }
 
     }
