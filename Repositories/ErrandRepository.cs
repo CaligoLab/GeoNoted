@@ -1,4 +1,5 @@
 ﻿using Geonote.Models;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace Geonote.Repositories
 {
@@ -6,11 +7,11 @@ namespace Geonote.Repositories
     {
         private static readonly string stringErrand = "Errand";
         
-        public static void AddNewErrand(string errandName, ErrandsCategory categorie, Location location)
+        public static void AddNewErrand(string errandName, ErrandsCategory categorie, Location location, Item itemsList)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData(stringErrand, "Id, Name, Category, LocationId, Location", 
-                                          $"\"{id}\", \"{errandName}\", \"{categorie}\", \"{location}\"");
+            SQLTableManagement.InsertData(stringErrand, "Id, Name, Category, ItemsList, Location", 
+                                          $"\"{id}\", \"{errandName}\", \"{categorie}\", \"{itemsList}\", \"{location}\"");
         }
 
     }
