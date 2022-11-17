@@ -31,11 +31,12 @@ app.MapControllerRoute(
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 
 /*
-
+Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries");
+Geonote.Repositories.ErrandsCategoriesRepository.AddNewErrandCategory("grosseries");
 
 */
 //
 
-Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries");
+
 
 app.Run();
