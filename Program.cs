@@ -36,7 +36,6 @@ app.MapControllerRoute(
 */
 //
 
-Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries", null, null, null);
-
+Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries");
 
 app.Run();
