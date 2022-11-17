@@ -36,5 +36,7 @@ Geonote.Repositories.Migrations.run(sqliteConnection);
 */
 SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20), Name VARCHAR(200))");
 
+Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries", null, null, null);
+
 
 app.Run();
