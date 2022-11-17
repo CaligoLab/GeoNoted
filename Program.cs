@@ -27,14 +27,14 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
-Geonote.Repositories.Migrations.run(sqliteConnection);
+//var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
+//Geonote.Repositories.Migrations.run(sqliteConnection);
 
 /*
 
 
 */
-SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20), Name VARCHAR(200))");
+//
 
 Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries", null, null, null);
 
