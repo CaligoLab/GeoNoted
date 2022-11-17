@@ -10,14 +10,14 @@ namespace Geonote.Models
 
         public List<Item> ItemsList { get; set; }
         
-        public List<ErrandsCategory> Categories { get; set; }
+        public ErrandsCategory Category { get; set; }
         
         public Location Locations { get; set; }
 
 
         public Errand()
         {
-            Categories = new List<ErrandsCategory>();
+            ItemsList = new List<Item>();
         }
     }
 }
