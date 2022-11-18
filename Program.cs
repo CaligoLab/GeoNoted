@@ -1,3 +1,4 @@
+using Geonote.Models;
 using Geonote.Repositories;
 using System.Data.SQLite;
 
@@ -31,12 +32,21 @@ app.MapControllerRoute(
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 
 /*
-Geonote.Repositories.ErrandRepository.AddNewErrand("buy grosseries");
+var category = new ErrandsCategory
+{ Name = null};
+
 Geonote.Repositories.ErrandsCategoriesRepository.AddNewErrandCategory("grosseries");
 
 */
-SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20), Name VARCHAR(200), CategoryId VARCHAR(20), LocationId VARCHAR(20))");
 
+
+SQLTableManagement.CreateTable("CREATE TABLE Item (Id VARCHAR(20), Name VARCHAR(200), ErrandId VARCHAR(20))");
+
+Geonote.Repositories.ItemRepository.AddNewItem("milk", null);
+Geonote.Repositories.ItemRepository.AddNewItem("eggs", null);
+Geonote.Repositories.ItemRepository.AddNewItem("bread", null);
+Geonote.Repositories.ItemRepository.AddNewItem("butter", null);
+Geonote.Repositories.ItemRepository.AddNewItem("sugar and salt", null);
 
 
 app.Run();
