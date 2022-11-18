@@ -37,16 +37,16 @@ var category = new ErrandsCategory
 
 Geonote.Repositories.ErrandsCategoriesRepository.AddNewErrandCategory("grosseries");
 
-*/
-
-
-SQLTableManagement.CreateTable("CREATE TABLE Item (Id VARCHAR(20), Name VARCHAR(200), ErrandId VARCHAR(20))");
-
 Geonote.Repositories.ItemRepository.AddNewItem("milk", null);
 Geonote.Repositories.ItemRepository.AddNewItem("eggs", null);
 Geonote.Repositories.ItemRepository.AddNewItem("bread", null);
 Geonote.Repositories.ItemRepository.AddNewItem("butter", null);
 Geonote.Repositories.ItemRepository.AddNewItem("sugar and salt", null);
+
+*/
+
+SQLTableManagement.CreateTable("CREATE TABLE Location (Id VARCHAR(20), Longitude VARCHAR(200), Latitude VARCHAR(200), PlaceId VARCHAR(20))");
+SQLTableManagement.CreateTable("CREATE TABLE Place (Id VARCHAR(20), Name VARCHAR(200))");
 
 
 app.Run();
