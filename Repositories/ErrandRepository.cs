@@ -24,9 +24,6 @@ namespace Geonote.Repositories
                 { columnNames += ", LocationId"; columnValues += $", \"{location.Id}\""; }
             }
 
-
-
-
             SQLTableManagement.InsertData(stringErrand, columnNames, columnValues);
         }
 

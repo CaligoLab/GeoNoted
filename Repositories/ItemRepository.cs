@@ -6,11 +6,17 @@ namespace Geonote.Repositories
     {
         private static readonly string stringItem = "Item";
 
-        public static void AddNewItem(string itemName)
+        public static void AddNewItem(string itemName, string? errandId)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData(stringItem, "Id, Name",
-                                          $"\"{id}\", \"{itemName}\"");
+
+            var columnNames = "Id, Name";
+            var columnValues = $"\"{id}\", \"{itemName}\"";
+
+            if (errandId != null)
+            { columnNames += ", ErrandId"; columnValues += $", \"{errandId}\""; }
+
+            SQLTableManagement.InsertData(stringItem, columnNames, columnValues);
         }
     }
 }
