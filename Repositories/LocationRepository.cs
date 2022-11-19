@@ -4,12 +4,12 @@ namespace Geonote.Repositories
 {
     public class LocationRepository
     {
-        private static readonly string locationErrand = "Location";
+        private static readonly string locationTableName = "Location";
         
         public static void AddNewErrand(string locationName, string longitude, string latitude)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData(locationErrand, "ID, Name, Longitude, Latitude", 
+            SQLTableManagement.InsertData(locationTableName, "ID, Name, Longitude, Latitude", 
                                           $"\" {id}\", \"{locationName}\", \"{longitude}\", \"{latitude}\"");
         }
 
