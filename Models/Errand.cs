@@ -7,6 +7,8 @@ namespace Geonote.Models
         public string Id { get; set; }
         
         public string Name { get; set; }
+        
+        public string Comment { get; set; }
 
         public List<Item>? ItemsList { get; set; }
         
