@@ -5,9 +5,9 @@ namespace Geonote.Repositories
 {
     public class ErrandRepository
     {
-        private static readonly string stringErrand = "Errand";
+        private static readonly string ErrandTableName = "Errand";
         
-        public static void AddNewErrand(string errandName, ErrandsCategory? category, Location? location)
+        public static void AddNewErrand(string errandName, ErrandsCategory? category, Location? location, string? comment)
         {
             var id = Guid.NewGuid();
             var columnNames = "Id, Name";
@@ -18,13 +18,16 @@ namespace Geonote.Repositories
                 if (category.Id != null)
                 { columnNames += ", CategoryId"; columnValues += $", \"{category.Id}\""; }
             }
+            
             if (location != null)
             {
                 if (location.Id != null)
                 { columnNames += ", LocationId"; columnValues += $", \"{location.Id}\""; }
             }
-
-            SQLTableManagement.InsertData(stringErrand, columnNames, columnValues);
+            
+            if (comment != null) { columnNames += ", Comment"; columnValues += $", \"{comment}\""; }
+            
+            SQLTableManagement.InsertData(ErrandTableName, columnNames, columnValues);
         }
 
     }
