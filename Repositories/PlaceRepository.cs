@@ -2,12 +2,12 @@
 {
     public class PlaceRepository
     {
-        private static readonly string stringPlace = "Place";
+        private static readonly string placeTableName = "Place";
 
         public static void AddNewErrand(string placeName)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData(stringPlace, "Id, Name",
+            SQLTableManagement.InsertData(placeTableName, "Id, Name",
                                           $"\"{id}\", \"{placeName}\"");
         }
     }
