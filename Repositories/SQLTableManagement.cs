@@ -50,7 +50,6 @@ namespace Geonote.Repositories
 
             }
             return sqlite_cmd.ExecuteReader();
-            //GetSQLiteConnection().Close();
         }
 
         public static SQLiteDataReader ReadCustomData(string customSelectStatement)

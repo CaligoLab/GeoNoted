@@ -30,5 +30,22 @@ namespace Geonote.Repositories
             SQLTableManagement.InsertData(ErrandTableName, columnNames, columnValues);
         }
 
+        public static Errand? GetErrand(string errandId)
+        {
+            string clause = $"Id = \"{errandId}\"";
+            var sqlite_datareader = SQLTableManagement.ReadData(ErrandTableName, clause);
+            while (sqlite_datareader.Read())
+            {
+                string name = sqlite_datareader.GetString(1);
+                SQLiteConnect.CoseConnections(sqlite_datareader);
+                return new Errand
+                {
+                    Id = errandId,
+                    Name = name
+                };
+            }
+            SQLiteConnect.CoseConnections(sqlite_datareader);
+            return null;
+        }
     }
 }
