@@ -44,9 +44,9 @@ Geonote.Repositories.ItemRepository.AddNewItem("butter", null);
 Geonote.Repositories.ItemRepository.AddNewItem("sugar and salt", null);
 
 */
+Geonote.Repositories.LocationRepository.AddNewLocation("35.668390", "139.698574", null);
+Geonote.Repositories.PlaceRepository.AddNewPlace("grossery store");
 
-SQLTableManagement.CreateTable("CREATE TABLE Location (Id VARCHAR(20), Longitude VARCHAR(200), Latitude VARCHAR(200), PlaceId VARCHAR(20))");
-SQLTableManagement.CreateTable("CREATE TABLE Place (Id VARCHAR(20), Name VARCHAR(200))");
 
 
 app.Run();

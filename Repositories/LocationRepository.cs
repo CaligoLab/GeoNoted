@@ -6,20 +6,17 @@ namespace Geonote.Repositories
     {
         private static readonly string locationTableName = "Location";
         
-        public static void AddNewErrand(string locationName, string longitude, string latitude, string? placeId)
+        public static void AddNewLocation(string latitude, string longitude, string? placeId)
         {
             var id = Guid.NewGuid();
 
-            var columnNames = "Id, Name, Longitude, Latitude";
-            var columnValues = $"\"{id}\", \"{locationName}\", \"{longitude}\", \"{latitude}\"";
+            var columnNames = "Id, Latitude, Longitude";
+            var columnValues = $"\"{id}\", \"{latitude}\", \"{longitude}\"";
 
-            if (placeId != null)
-
-                { columnNames += ", PlaceId"; columnValues += $", \"{placeId}\""; }
+            if (placeId != null) { columnNames += ", PlaceId"; columnValues += $", \"{placeId}\""; }
 
 
             SQLTableManagement.InsertData(locationTableName, columnNames, columnValues);
         }
-
     }
 }
