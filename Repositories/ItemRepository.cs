@@ -4,7 +4,7 @@ namespace Geonote.Repositories
 {
     public class ItemRepository
     {
-        private static readonly string stringItem = "Item";
+        private static readonly string ItemTableName = "Item";
 
         public static void AddNewItem(string itemName, string? errandId)
         {
@@ -16,7 +16,7 @@ namespace Geonote.Repositories
             if (errandId != null)
             { columnNames += ", ErrandId"; columnValues += $", \"{errandId}\""; }
 
-            SQLTableManagement.InsertData(stringItem, columnNames, columnValues);
+            SQLTableManagement.InsertData(ItemTableName, columnNames, columnValues);
         }
     }
 }

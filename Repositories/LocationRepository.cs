@@ -4,7 +4,7 @@ namespace Geonote.Repositories
 {
     public class LocationRepository
     {
-        private static readonly string locationErrand = "Location";
+        private static readonly string locationTableName = "Location";
         
         public static void AddNewErrand(string locationName, string longitude, string latitude, string? placeId)
         {
