@@ -4,7 +4,7 @@
     {
         private static readonly string placeTableName = "Place";
 
-        public static void AddNewErrand(string placeName)
+        public static void AddNewPlace(string placeName)
         {
             var id = Guid.NewGuid();
             SQLTableManagement.InsertData(placeTableName, "Id, Name",
