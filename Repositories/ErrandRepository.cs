@@ -65,5 +65,24 @@ namespace Geonote.Repositories
             SQLiteConnect.CoseConnections(sqlite_datareader);
             return allTopics;
         }
+
+        public static void UpdateErrandNameById(string id, string name)
+        {
+            var setName = $"Name = \"{name}\"";
+            var clause = $"Id = \"{id}\"";
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void DeleteErrandById(string id)
+        {
+            var clause = $"Id = \"{id}\"";
+            SQLTableManagement.DeleteData(ErrandTableName, clause);
+        }
+
+        public static void DeleteErrandByName(string name)
+        {
+            var clause = $"Name = \"{name}\"";
+            SQLTableManagement.DeleteData(ErrandTableName, clause);
+        }
     }
 }
