@@ -32,22 +32,12 @@ app.MapControllerRoute(
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 
 /*
-var category = new ErrandsCategory
-{ Name = null};
 
-Geonote.Repositories.ErrandsCategoriesRepository.AddNewErrandCategory("grosseries");
-
-Geonote.Repositories.ItemRepository.AddNewItem("milk", null);
-Geonote.Repositories.ItemRepository.AddNewItem("eggs", null);
-Geonote.Repositories.ItemRepository.AddNewItem("bread", null);
-Geonote.Repositories.ItemRepository.AddNewItem("butter", null);
-Geonote.Repositories.ItemRepository.AddNewItem("sugar and salt", null);
-
-Geonote.Repositories.LocationRepository.AddNewLocation("35.668390", "139.698574", null);
-Geonote.Repositories.PlaceRepository.AddNewPlace("grossery store");
 
 */
-var errand = Geonote.Repositories.ErrandRepository.GetErrand("b6621fa5-7b6b-47c7-bd60-339b245a792a");
+
+
+
 
 
 
