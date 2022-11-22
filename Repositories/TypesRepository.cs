@@ -5,10 +5,10 @@ namespace Geonote.Repositories
     {
         private static readonly string ErrandType = "Type";
 
-        public static void AddNewType(string typeName, bool recurring, bool justHint)
+        public static void AddNewType(string typeName, bool recurring)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData(ErrandType, "ID, TypeName, Recurring, JustHint", $"\" {id}\", \"{typeName}\", \"{recurring}\", \"{justHint}\"");
+            SQLTableManagement.InsertData(ErrandType, "ID, TypeName, Recurring", $"\" {id}\", \"{typeName}\", \"{recurring}\"");
         }
 
         public ErrandsTypes()

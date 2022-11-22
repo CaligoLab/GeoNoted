@@ -1,15 +1,16 @@
 ﻿using System;
 namespace Geonote.Models
 {
-    public class Hint
+    public class Types
     {
         public string Id { get; set; }
 
         public string Name { get; set; }
 
-        public Hint()
+        public bool Recurring { get; set; }
+
+        public Types()
         {
         }
     }
 }
-

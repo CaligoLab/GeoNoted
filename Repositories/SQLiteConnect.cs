@@ -37,7 +37,7 @@ namespace Geonote.Repositories
             return _conn;
         }
 
-        public static void CoseConnections(SQLiteDataReader sqlite_datareader)
+        public static void CloseConnections(SQLiteDataReader sqlite_datareader)
         {
             sqlite_datareader.Close();
             GetSQLiteConnection().Close();

@@ -7,7 +7,7 @@ namespace Geonote.Repositories
     {
         private static readonly string ErrandTableName = "Errand";
         
-        public static void AddNewErrand(string errandName, ErrandsCategory? category, Location? location, string? comment)
+        public static void AddNewErrand(string errandName, Categories? category, Location? location, string? comment)
         {
             var id = Guid.NewGuid();
             var columnNames = "Id, Name";
@@ -37,14 +37,14 @@ namespace Geonote.Repositories
             while (sqlite_datareader.Read())
             {
                 string name = sqlite_datareader.GetString(1);
-                SQLiteConnect.CoseConnections(sqlite_datareader);
+                SQLiteConnect.CloseConnections(sqlite_datareader);
                 return new Errand
                 {
                     Id = errandId,
                     Name = name
                 };
             }
-            SQLiteConnect.CoseConnections(sqlite_datareader);
+            SQLiteConnect.CloseConnections(sqlite_datareader);
             return null;
         }
 
@@ -62,7 +62,7 @@ namespace Geonote.Repositories
                     Name = name
                 });
             }
-            SQLiteConnect.CoseConnections(sqlite_datareader);
+            SQLiteConnect.CloseConnections(sqlite_datareader);
             return allTopics;
         }
 

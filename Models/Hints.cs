@@ -1,12 +1,15 @@
 ﻿using System;
 namespace Geonote.Models
 {
-    public class ErrandsCategory
+    public class Hints
     {
         public string Id { get; set; }
+
         public string Name { get; set; }
 
-        public ErrandsCategory()
+        public Location? Location { get; set; }
+
+        public Hints()
         {
         }
     }
