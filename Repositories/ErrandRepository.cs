@@ -47,5 +47,23 @@ namespace Geonote.Repositories
             SQLiteConnect.CoseConnections(sqlite_datareader);
             return null;
         }
+
+        public static List<Errand> GetAllErrands()
+        {
+            var allTopics = new List<Errand>();
+            var sqlite_datareader = SQLTableManagement.ReadData(ErrandTableName, null);
+            while (sqlite_datareader.Read())
+            {
+                string id = sqlite_datareader.GetString(0);
+                string name = sqlite_datareader.GetString(1);
+                allTopics.Add(new Errand
+                {
+                    Id = id,
+                    Name = name
+                });
+            }
+            SQLiteConnect.CoseConnections(sqlite_datareader);
+            return allTopics;
+        }
     }
 }
