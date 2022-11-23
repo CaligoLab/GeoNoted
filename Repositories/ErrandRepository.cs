@@ -181,18 +181,15 @@ namespace Geonote.Repositories
 
         public static void UpdateErrandNameById(string id, string? name, string? comment)
         {
-            if(!(name == null) || !(comment == null))
-            {
-                var setName = "";
-                var clause = $"Id = \"{id}\"";
+            var setName = "";
+            var clause = $"Id = \"{id}\"";
 
-                if(!(name == null))
-                { setName += $"Name = \"{name}\""; }
-                if (!(comment == null))
-                { setName += $"Comment = \"{comment}\""; }
+            if(!(name == null))
+            { setName += $"Name = \"{name}\""; }
+            if (!(comment == null))
+            { setName += $"Comment = \"{comment}\""; }
                 
-                SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
-            }
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
         }
 
         public static void DeleteErrandById(string id)
