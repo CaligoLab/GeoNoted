@@ -69,13 +69,14 @@ namespace Geonote.Repositories
             return allTopics;
         }
 
-        /*
-        public static Errand? GetTopicWithAllItems(string errandIdForSelect)
+        
+        public static Errand? GetErrandWithAllFields(string errandIdForSelect)
         {
             string statement = "SELECT Errand.Id AS ErrandId, Errand.Name, Errand.Comment, " +
                 "Item.Id AS ItemId, Item.Name, " +
                 "Category.Id AS CatgoryId, Category.Name, " +
-                "Location.Id AS LocationId, Location.Latitude, Location.Longitude\n" +
+                "Location.Id AS LocationId, Location.Latitude, Location.Longitude, " +
+                "Place.Id AS PlaceId, Place.Name\n" +
                 "FROM Errand\n" +
                 "LEFT JOIN Category ON Errand.CategoryId = Category.Id\n" +
                 "LEFT JOIN Item ON Errand.Id = Item.ErrandId\n" +
@@ -84,6 +85,9 @@ namespace Geonote.Repositories
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
             SQLiteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
             Errand errand = null;
+            ErrandsCategory category = null;
+            Location location = null;
+            Place place = null;
             var items = new List<Item>();
 
             while (sqlite_datareader.Read())
@@ -102,9 +106,83 @@ namespace Geonote.Repositories
                 }
 
                 Item item = null;
+
+                if (sqlite_datareader[3] != DBNull.Value)
+                {
+                    var itemId = sqlite_datareader.GetString(3);
+
+                    if (items.Where(i => i.Id == itemId).Count() > 0)
+                    {
+                        item = items.Where(i => i.Id == itemId).First();
+                    }
+                    else
+                    {
+                        var itemName = sqlite_datareader.GetString(4);
+                        item = new Item
+                        {
+                            Id = itemId,
+                            Name = itemName
+                        };
+                        items.Add(item);
+                    }
+
+                    if (item != null) //can item be null here?
+                    {
+                        if (!errand.ItemsList.Contains(item))
+                        {
+                            errand.ItemsList.Add(item);
+                        }
+                    }
+                }
+
+
+                //some exception in GetCategory 
+                if (sqlite_datareader[5] != DBNull.Value)
+                {
+                    var categoryId = sqlite_datareader.GetString(5);
+                    var categoryName = sqlite_datareader.GetString(6);
+                    if(category == null)
+                    category = new ErrandsCategory
+                    {
+                        Id = categoryId,
+                        Name = categoryName
+                    };
+                    errand.Category = category;
+                }
+
+                if (sqlite_datareader[7] != DBNull.Value)
+                {
+                    var locationId = sqlite_datareader.GetString(7);
+                    var latitude = sqlite_datareader.GetString(8);
+                    var longitude = sqlite_datareader.GetString(9);
+                    if(location == null)
+                    {
+                        location = new Location
+                        {
+                            Id = locationId,
+                            Latitude = latitude,
+                            Longitude = longitude
+                        };
+                        errand.Location = location;
+                    }
+                }
+
+                if (sqlite_datareader[10] != DBNull.Value)
+                {
+                    var placeId = sqlite_datareader.GetString(10);
+                    var placeName = sqlite_datareader.GetString(11);
+                    if(place == null)
+                    place = new Place
+                    {
+                        Id = placeId,
+                        Name = placeName
+                    };
+                    location.Place = place;
+                }
             }
+            return errand;
         }
-        */
+        
 
         public static void UpdateErrandNameById(string id, string? name, string? comment)
         {
