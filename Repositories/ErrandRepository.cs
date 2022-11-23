@@ -126,17 +126,12 @@ namespace Geonote.Repositories
                         items.Add(item);
                     }
 
-                    if (item != null) //can item be null here?
+                    if (!errand.ItemsList.Contains(item))
                     {
-                        if (!errand.ItemsList.Contains(item))
-                        {
-                            errand.ItemsList.Add(item);
-                        }
+                        errand.ItemsList.Add(item);
                     }
                 }
 
-
-                //some exception in GetCategory 
                 if (sqlite_datareader[5] != DBNull.Value)
                 {
                     var categoryId = sqlite_datareader.GetString(5);
