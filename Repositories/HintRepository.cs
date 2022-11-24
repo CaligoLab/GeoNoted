@@ -11,12 +11,8 @@ namespace Geonote.Repositories
         {
             var id = Guid.NewGuid();
 
-            var columnNames = "Id, Name, Category, Location";
-            var columnValues = $"\"{id}\", \"{hintName}\", \"{category}, \"{location}\"";
-
-            if (hintId != null)
-            { columnNames += ", id"; columnValues += $", \"{hintId}\""; }
-
+            var columnNames = "Id, Name";
+            var columnValues = $"\"{id}\", \"{hintName}\"";
 
             if (category != null)
             {
