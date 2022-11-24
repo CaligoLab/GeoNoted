@@ -37,7 +37,7 @@ namespace Geonote.Repositories
             {
                 string name = sqlite_datareader.GetString(1);
                 string comment = sqlite_datareader.GetString(2);
-                SQLiteConnect.CoseConnections(sqlite_datareader);
+                SQLiteConnect.CloseConnections(sqlite_datareader);
                 return new Errand
                 {
                     Id = errandId,
@@ -85,7 +85,7 @@ namespace Geonote.Repositories
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
             SQLiteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
             Errand errand = null;
-            ErrandsCategory category = null;
+            Categorу category = null;
             Location location = null;
             Place place = null;
             var items = new List<Item>();
@@ -137,7 +137,7 @@ namespace Geonote.Repositories
                     var categoryId = sqlite_datareader.GetString(5);
                     var categoryName = sqlite_datareader.GetString(6);
                     if(category == null)
-                    category = new ErrandsCategory
+                    category = new Categorу
                     {
                         Id = categoryId,
                         Name = categoryName
