@@ -7,7 +7,7 @@ namespace Geonote.Repositories
     {
         private static readonly string ErrandTableName = "Errand";
         
-        public static void AddNewErrand(string errandName, Categories? category, Location? location, string? comment)
+        public static void AddNewErrand(string errandName, Categorу? category, Location? location, string? comment)
         {
             var id = Guid.NewGuid();
             var columnNames = "Id, Name";

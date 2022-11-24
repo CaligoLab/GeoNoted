@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Geonote.Repositories
 {
-    public class CategoriesRepository
+    public class CategoryRepository
     {
         private static readonly string Category = "Category";
 
@@ -10,7 +10,7 @@ namespace Geonote.Repositories
             var id = Guid.NewGuid();   
             SQLTableManagement.InsertData(Category, "Id, Name", $"\" {id}\", \"{categoryName}\"");
         }
-        public CategoriesRepository()
+        public CategoryRepository()
         {
         }
     }

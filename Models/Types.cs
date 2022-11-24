@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Geonote.Models
 {
-    public class Types
+    public class Type
     {
         public string Id { get; set; }
 
@@ -9,7 +9,7 @@ namespace Geonote.Models
 
         public bool Recurring { get; set; }
 
-        public Types()
+        public Type()
         {
         }
     }

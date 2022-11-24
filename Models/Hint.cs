@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Geonote.Models
 {
-    public class Hints
+    public class Hint
     {
         public string Id { get; set; }
 
@@ -9,7 +9,7 @@ namespace Geonote.Models
 
         public Location? Location { get; set; }
 
-        public Hints()
+        public Hint()
         {
         }
     }

@@ -12,7 +12,7 @@ namespace Geonote.Models
 
         public List<Item>? ItemsList { get; set; }
         
-        public Categories? Category { get; set; }
+        public Categorу? Category { get; set; }
         
         public Location? Location { get; set; }
 

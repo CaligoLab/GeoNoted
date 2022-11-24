@@ -7,7 +7,7 @@ namespace Geonote.Repositories
     {
         private static readonly string HintTableName = "Hint";
 
-        public static void AddNewHint(string hintName, string? hintId, Categories? category, Location? location)
+        public static void AddNewHint(string hintName, string? hintId, Categorу? category, Location? location)
         {
             var id = Guid.NewGuid();
 

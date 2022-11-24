@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Geonote.Repositories
 {
-    public class ErrandsTypes
+    public class TypeRepository
     {
         private static readonly string ErrandType = "Type";
 
@@ -11,7 +11,7 @@ namespace Geonote.Repositories
             SQLTableManagement.InsertData(ErrandType, "ID, TypeName, Recurring", $"\" {id}\", \"{typeName}\", \"{recurring}\"");
         }
 
-        public ErrandsTypes()
+        public TypeRepository()
         {
 
         }
