@@ -18,7 +18,7 @@ namespace Geonote.Repositories
             SQLTableManagement.CreateTable("CREATE TABLE Location (Id VARCHAR(20), Longitude VARCHAR(200), Latitude VARCHAR(200), PlaceId VARCHAR(20))");
             SQLTableManagement.CreateTable("CREATE TABLE Place (Id VARCHAR(20), Name VARCHAR(200), AddressName VARCHAR(200))");
             SQLTableManagement.CreateTable("CREATE TABLE Type (Id VARCHAR(20), Name VARCHAR(200), Recurring INT, JustHint INT)"); //Comment VARCHAR(200) ?
-            SQLTableManagement.CreateTable("CREATE TABLE Hints (Id VARCHAR(20), Name VARCHAR(200), CategoryId VARCHAR(20), LocationId VARCHAR(20))");
+            SQLTableManagement.CreateTable("CREATE TABLE Hint (Id VARCHAR(20), Name VARCHAR(200), CategoryId VARCHAR(20), LocationId VARCHAR(20))");
         }
     }
 }
