@@ -35,7 +35,7 @@ app.MapControllerRoute(
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
 */
-var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithAllFields("b6621fa5-7b6b-47c7-bd60-339b245a792a");
+//var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithAllFields("b6621fa5-7b6b-47c7-bd60-339b245a792a");
 
 
 

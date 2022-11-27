@@ -7,6 +7,8 @@ namespace Geonote.Models
 
         public string Name { get; set; }
 
+        public Categorу? Category { get; set; }
+
         public Location? Location { get; set; }
 
         public Hint()
