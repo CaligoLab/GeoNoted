@@ -36,7 +36,8 @@ namespace Geonote.Repositories
             while (sqlite_datareader.Read())
             {
                 string name = sqlite_datareader.GetString(1);
-                string comment = sqlite_datareader.GetString(2);
+                string? comment = null;
+                if (sqlite_datareader[2] != DBNull.Value) { comment = sqlite_datareader.GetString(2); }
                 SQLiteConnect.CloseConnections(sqlite_datareader);
                 return new Errand
                 {
@@ -57,7 +58,8 @@ namespace Geonote.Repositories
             {
                 string id = sqlite_datareader.GetString(0);
                 string name = sqlite_datareader.GetString(1);
-                string comment = sqlite_datareader.GetString(2);
+                string? comment = null;
+                if (sqlite_datareader[2] != DBNull.Value) { comment = sqlite_datareader.GetString(2); }
                 allTopics.Add(new Errand
                 {
                     Id = id,
@@ -94,7 +96,8 @@ namespace Geonote.Repositories
             {
                 var errandId = sqlite_datareader.GetString(0);
                 var errandName = sqlite_datareader.GetString(1);
-                var comment = sqlite_datareader.GetString(2);
+                string? comment = null;
+                if (sqlite_datareader[2] != DBNull.Value) {comment = sqlite_datareader.GetString(2);}
                 if (errand == null)
                 {
                     errand = new Errand
