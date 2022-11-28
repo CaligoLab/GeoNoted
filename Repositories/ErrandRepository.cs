@@ -182,7 +182,7 @@ namespace Geonote.Repositories
         }
         
 
-        public static void UpdateErrandNameById(string id, string? name, string? comment)
+        public static void UpdateErrandById(string id, string? name, string? comment)
         {
             var setName = "";
             var clause = $"Id = \"{id}\"";
