@@ -28,6 +28,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+//Geonote.Repositories.Migrations.Run();
 //var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 
@@ -36,7 +37,7 @@ var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
 var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithAllFields("b6621fa5-7b6b-47c7-bd60-339b245a792a");
 */
-Geonote.Repositories.Migrations.Run();
+
 
 
 app.Run();
