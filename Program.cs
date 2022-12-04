@@ -28,9 +28,14 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+<<<<<<< Updated upstream
 //Geonote.Repositories.Migrations.Run();
 //var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
 //Geonote.Repositories.Migrations.run(sqliteConnection);
+=======
+var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
+Geonote.Repositories.Migrations.run(sqliteConnection);
+>>>>>>> Stashed changes
 
 /*
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
