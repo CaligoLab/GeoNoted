@@ -1,14 +1,16 @@
 ﻿using System;
 namespace Geonote.Models
 {
-    public class ErrandsCategory
+    public class Type
     {
         public string Id { get; set; }
+
         public string Name { get; set; }
 
-        public ErrandsCategory()
+        public bool Recurring { get; set; }
+
+        public Type()
         {
         }
     }
 }
-
