@@ -72,7 +72,7 @@ namespace Geonote.Repositories
         
         public static Errand? GetErrandWithAllFields(string errandIdForSelect)
         {
-            string statement = "SELECT Errand.Id AS ErrandId, Errand.Name, Errand.comment, " +
+            string statement = "SELECT Errand.Id AS ErrandId, Errand.Name, Errand.Comment, " +
                 "Item.Id AS ItemId, Item.Name, " +
                 "Category.Id AS CatgoryId, Category.Name, " +
                 "Location.Id AS LocationId, Location.Latitude, Location.Longitude, " +
@@ -101,7 +101,7 @@ namespace Geonote.Repositories
                     {
                         Id = errandId,
                         Name = errandName,
-                        comment = comment
+                        Comment = comment
                     };
                 }
 
