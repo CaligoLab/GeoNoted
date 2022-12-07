@@ -37,7 +37,7 @@ namespace Geonote.Repositories
             {
                 string name = sqlite_datareader.GetString(1);
                 string comment = sqlite_datareader.GetString(2);
-                SQLiteConnect.CoseConnections(sqlite_datareader);
+                SQLiteConnect.CloseConnections(sqlite_datareader);
                 return new Errand
                 {
                     Id = errandId,
@@ -45,7 +45,7 @@ namespace Geonote.Repositories
                     Comment = comment
                 };
             }
-            SQLiteConnect.CoseConnections(sqlite_datareader);
+            SQLiteConnect.CloseConnections(sqlite_datareader);
             return null;
         }
 
@@ -65,14 +65,14 @@ namespace Geonote.Repositories
                     Comment = comment
                 });
             }
-            SQLiteConnect.CoseConnections(sqlite_datareader);
+            SQLiteConnect.CloseConnections(sqlite_datareader);
             return allTopics;
         }
 
         /*
         public static Errand? GetTopicWithAllItems(string errandIdForSelect)
         {
-            string statement = "SELECT Errand.Id AS ErrandId, Errand.Name, Errand.Comment, " +
+            string statement = "SELECT Errand.Id AS ErrandId, Errand.Name, Errand.comment, " +
                 "Item.Id AS ItemId, Item.Name, " +
                 "Category.Id AS CatgoryId, Category.Name, " +
                 "Location.Id AS LocationId, Location.Latitude, Location.Longitude\n" +
@@ -97,7 +97,7 @@ namespace Geonote.Repositories
                     {
                         Id = errandId,
                         Name = errandName,
-                        Comment = comment
+                        comment = comment
                     };
                 }
 

@@ -16,6 +16,9 @@ namespace Geonote.Models
         
         public Location? Location { get; set; }
 
+        //add optional Address?
+        //add optional Place?
+
 
         public Errand()
         {

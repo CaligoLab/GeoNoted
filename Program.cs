@@ -31,14 +31,11 @@ app.MapControllerRoute(
 //var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 
+
 /*
 
 
 */
-
-
-
-
 
 
 app.Run();
