@@ -8,23 +8,20 @@ namespace Geonote.Repositories
     {
         private static readonly string ErrandTableName = "Errand";
         
-        public static void AddNewErrand(string errandName, string? comment, string? categoryId, string? locationId, string? placeId)
+        public static void AddNewErrand(Errand errand)
         {
-            var id = Guid.NewGuid();
-            var columnNames = "Id, Name";
-            var columnValues = $"\"{id}\", \"{errandName}\"";
-
-            if (comment != null) 
-            { columnNames += ", Comment"; columnValues += $", \"{comment}\""; }
-
-            if (categoryId != null)
-            { columnNames += ", CategoryId"; columnValues += $", \"{categoryId}\""; }
             
-            if (locationId != null)
-            { columnNames += ", LocationId"; columnValues += $", \"{locationId}\""; }
+            var columnNames = "Id, Name";
+            var columnValues = $"\"{errand.Id}\", \"{errand.Name}\"";
 
-            if (placeId != null)
-            { columnNames += ", PlaceId"; columnValues += $", \"{placeId}\""; }
+            if (errand.Comment != null) 
+            { columnNames += ", Comment"; columnValues += $", \"{errand.Comment}\""; }
+
+            if (errand.Category != null)
+            { columnNames += ", CategoryId"; columnValues += $", \"{errand.Category.Id}\""; }
+            
+            if (errand.Location != null)
+            { columnNames += ", LocationId"; columnValues += $", \"{errand.Location.Id}\""; }
 
             SQLTableManagement.InsertData(ErrandTableName, columnNames, columnValues);
         }
@@ -182,15 +179,19 @@ namespace Geonote.Repositories
         }
         
 
-        public static void UpdateErrandById(string id, string? name, string? comment)
+        public static void UpdateErrandById(string id, Errand errand)
         {
             var setName = "";
             var clause = $"Id = \"{id}\"";
 
-            if(!(name == null))
-            { setName += $"Name = \"{name}\""; }
-            if (!(comment == null))
-            { setName += $"Comment = \"{comment}\""; }
+            if(!(errand.Name == null))
+            { setName += $"Name = \"{errand.Name}\""; }
+
+            if(errand.Name != null && errand.Comment != null) 
+            { setName += ", "; }
+
+            if (!(errand.Comment == null))
+            { setName += $"Comment = \"{errand.Comment}\""; }
                 
             SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
         }
