@@ -20,11 +20,6 @@ namespace Geonote.Models
         //add optional Address?
         //add optional Place?
 
-        //add optional Address?
-        //add optional Place?
-
-
-        public Errand()
         public Errand(string errandName, string errandComment, List<Item>? errandsItems, Categorу? errandCategory, Location? errandLocation)
         {
             ItemsList = new List<Item>();
