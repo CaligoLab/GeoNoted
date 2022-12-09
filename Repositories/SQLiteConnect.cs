@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿
+using System.Data.Entity;
 using System.Data.SQLite;
 
 namespace Geonote.Repositories

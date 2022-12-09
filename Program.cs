@@ -1,6 +1,7 @@
 using Geonote.Models;
 using Geonote.Repositories;
 using System.Data.SQLite;
+using System.Runtime.ExceptionServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,17 @@ app.MapControllerRoute(
 //Geonote.Repositories.Migrations.Run();
 //var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
 //Geonote.Repositories.Migrations.run(sqliteConnection);
+<<<<<<< Updated upstream
 
+
+=======
+/*var errand = new Geonote.Models.Errand()
+{
+    Name = "first",
+    Comment = "smth"
+};
+Geonote.Repositories.ErrandRepository.AddNewErrand(errand);*/
+>>>>>>> Stashed changes
 /*
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
@@ -39,5 +50,9 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 */
 
 
-
+//Geonote.Repositories.CategoryRepository.AddNewCategory("AutoService");
+//Geonote.Repositories.CategoryRepository.AddNewCategory("Beauty");
+//var categoryById = Geonote.Repositories.CategoryRepository.GetCategory("2badb9c6-a0ad-40ac-8f17-8eeda659633f");
+//var getAllCategoties = Geonote.Repositories.CategoryRepository.GetAllCategories();
+//var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategoties[0].Id);
 app.Run();

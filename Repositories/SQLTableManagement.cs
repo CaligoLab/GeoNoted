@@ -58,7 +58,5 @@ namespace Geonote.Repositories
             sqliteCommand.CommandText = customSelectStatement;
             return sqliteCommand.ExecuteReader();
         }
-
-
     }
 }
