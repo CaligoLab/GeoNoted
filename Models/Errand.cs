@@ -8,7 +8,7 @@ namespace Geonote.Models
         
         public string Name { get; set; }
         
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         public List<Item>? ItemsList { get; set; }
         
@@ -20,16 +20,9 @@ namespace Geonote.Models
         //add optional Address?
         //add optional Place?
 
-        public Errand(string errandName, string errandComment, List<Item>? errandsItems, Categorу? errandCategory, Location? errandLocation)
+        public Errand()
         {
             ItemsList = new List<Item>();
-             
-            Id = Guid.NewGuid().ToString();
-            Name = errandName;
-            Comment = errandComment;
-            ItemsList = errandsItems;
-            Category = errandCategory;
-            Location = errandLocation;
         }
     }
 }
