@@ -4,11 +4,11 @@
     {
         public string Id { get; set; }
 
-        public string Name { get; set; }
-        public string? AddressId { get; set; }
-        public string? Type { get; set; } // type or category? 
-        public string? Comment { get; set; }
-        public string? LocationId { get; set; }
+        public string placeName { get; set; }
+        public string? placeAddressId { get; set; }
+        public string? placeType { get; set; } // type or category? 
+        public string? placeComment { get; set; }
+        public string? placeLocationId { get; set; }
 
         public Place(string placeName, string? placeAddressId, string? placeType, string? placeComment, string? placeLocationId)
         {
