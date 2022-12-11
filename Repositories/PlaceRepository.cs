@@ -1,4 +1,3 @@
-﻿using Dapper;
 using Geonote.Models;
 using Microsoft.AspNetCore.Http.Features;
 using System.Data;
@@ -16,19 +15,19 @@ namespace Geonote.Repositories
         {
             
             var columnNames = "Id, Name";
-            var columnValues = $"\"{place.id}\", \"{place.name}\"";
+            var columnValues = $"\"{place.Id}\", \"{place.Name}\"";
 
             if (place.comment != null)
-            { columnNames += ", Comment"; columnValues += $", \"{place.comment}\""; }
+            { columnNames += ", Comment"; columnValues += $", \"{place.Comment}\""; }
             
             if (place.addressId != null)
-            { columnNames += ", Address"; columnValues += $", \"{place.addressId}\""; }
+            { columnNames += ", AddressId"; columnValues += $", \"{place.AddressId}\""; }
 
             if (place.type != null)
-            { columnNames += ", Type"; columnValues += $", \"{place.type}\""; }
+            { columnNames += ", Category"; columnValues += $", \"{place.Category}\""; }
 
             if (place.locationId != null)
-            { columnNames += ", LocationId"; columnValues += $", \"{place.locationId}\""; }
+            { columnNames += ", LocationId"; columnValues += $", \"{place.LocationId}\""; }
 
 
             SQLTableManagement.InsertData(placeTableName, columnNames, columnValues);
@@ -72,11 +71,11 @@ namespace Geonote.Repositories
             var setValues = "";
             var clause = $"Id = \"{id}\"";
 
-            setValues += $"Name = \"{place.name}\"";
-            setValues += $", AddressId = \"{place.addressId}\"";
-            setValues += $", Type = \"{place.type}\"";
-            setValues += $", Comment = \"{place.comment}\"";
-            setValues += $", LocationId = \"{place.locationId}\"";
+            setValues += $"Name = \"{place.Name}\"";
+            setValues += $", AddressId = \"{place.AddressId}\"";
+            setValues += $", Category = \"{place.Category}\"";
+            setValues += $", Comment = \"{place.Comment}\"";
+            setValues += $", LocationId = \"{place.LocationId}\"";
 
             SQLTableManagement.UpdateData(placeTableName, setValues, clause);
         }
