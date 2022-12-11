@@ -10,7 +10,8 @@ namespace Geonote.Repositories
         
         public static void AddNewErrand(Errand errand)
         {
-            
+            if(errand.Id == null) { errand.Id = Guid.NewGuid().ToString(); }
+
             var columnNames = "Id, Name";
             var columnValues = $"\"{errand.Id}\", \"{errand.Name}\"";
 
