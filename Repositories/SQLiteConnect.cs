@@ -11,7 +11,7 @@ namespace Geonote.Repositories
         public static SQLiteConnection CreateConnection()
         {
 
-            SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=database.db; Version = 3; New = True; Compress = True;");
+            SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=database.db");
             // Open the connection:
             try
             {

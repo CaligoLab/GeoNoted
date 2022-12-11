@@ -10,7 +10,7 @@ namespace Geonote.Repositories
 
         }
 
-        public static void Run() // TA: Create a checkup if this method has been already run to avoid trying to make duplicates and crushing the app
+        public static void Run(SQLiteConnection sqliteConnection) // TA: Create a checkup if this method has been already run to avoid trying to make duplicates and crushing the app
         {
             SQLTableManagement.CreateTable("CREATE TABLE Errand (Id VARCHAR(20) NOT NULL, Name VARCHAR(200) NOT NULL, Comment VARCHAR(200), CategoryId VARCHAR(20), LocationId VARCHAR(20), PlaceId VARCHAR(20), PRIMARY KEY(Id))");
             SQLTableManagement.CreateTable("CREATE TABLE Category (Id VARCHAR(20) NOT NULL, Name VARCHAR(200) NOT NULL, PRIMARY KEY(Id))");
