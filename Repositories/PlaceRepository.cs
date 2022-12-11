@@ -33,13 +33,13 @@ namespace Geonote.Repositories
 
             SQLTableManagement.InsertData(placeTableName, columnNames, columnValues);
         }
-
+/* 
         public static List<Place>? GetPlaceById(string placeId)
         {
            var newConnection = SQLiteConnect.CreateConnection();
             var output = newConnection.Query<Place>($"SELECT * FROM {placeTableName} WHERE id = \"{placeId}\" "); //check syntax for parametres in Dapper
             return output.ToList();
-           /* string clause = $"id = \"{placeIdOrig}\"";
+           string clause = $"id = \"{placeIdOrig}\"";
             var sqlite_datareader = SQLTableManagement.ReadData(placeTableName, clause);
             while (sqlite_datareader.Read())
             {
