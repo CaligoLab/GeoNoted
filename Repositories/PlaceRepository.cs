@@ -17,51 +17,51 @@ namespace Geonote.Repositories
             var columnNames = "Id, Name";
             var columnValues = $"\"{place.Id}\", \"{place.Name}\"";
 
-            if (place.comment != null)
+            if (place.Comment != null)
             { columnNames += ", Comment"; columnValues += $", \"{place.Comment}\""; }
             
-            if (place.addressId != null)
+            if (place.AddressId != null)
             { columnNames += ", AddressId"; columnValues += $", \"{place.AddressId}\""; }
 
-            if (place.type != null)
+            if (place.Category != null)
             { columnNames += ", Category"; columnValues += $", \"{place.Category}\""; }
 
-            if (place.locationId != null)
+            if (place.LocationId != null)
             { columnNames += ", LocationId"; columnValues += $", \"{place.LocationId}\""; }
 
 
             SQLTableManagement.InsertData(placeTableName, columnNames, columnValues);
         }
-/* 
-        public static List<Place>? GetPlaceById(string placeId)
-        {
-           var newConnection = SQLiteConnect.CreateConnection();
-            var output = newConnection.Query<Place>($"SELECT * FROM {placeTableName} WHERE id = \"{placeId}\" "); //check syntax for parametres in Dapper
-            return output.ToList();
-           string clause = $"id = \"{placeIdOrig}\"";
-            var sqlite_datareader = SQLTableManagement.ReadData(placeTableName, clause);
-            while (sqlite_datareader.Read())
-            {
-                string name = sqlite_datareader.GetString(1);
-                string addressId = sqlite_datareader.GetString(2);
-                string type = sqlite_datareader.GetString(3);
-                string comment = sqlite_datareader.GetString(4);
-                string locationId = sqlite_datareader.GetString(5);
-
-                SQLiteConnect.CloseConnections(sqlite_datareader);
-                return new Place(name, addressId, type, comment, locationId) //By creating a new entity, we are changing the id. Good - security, bad - ??
+        /* 
+                public static List<Place>? GetPlaceById(string placeId)
                 {
-                    id = placeIdOrig,
-                    name = name,
-                    addressId= addressId,
-                    type = type,
-                    comment = comment,
-                    locationId = locationId, 
-                };
-            }
-            SQLiteConnect.CloseConnections(sqlite_datareader);
-            return null;*/
-        }
+                   var newConnection = SQLiteConnect.CreateConnection();
+                    var output = newConnection.Query<Place>($"SELECT * FROM {placeTableName} WHERE id = \"{placeId}\" "); //check syntax for parametres in Dapper
+                    return output.ToList();
+                   string clause = $"id = \"{placeIdOrig}\"";
+                    var sqlite_datareader = SQLTableManagement.ReadData(placeTableName, clause);
+                    while (sqlite_datareader.Read())
+                    {
+                        string name = sqlite_datareader.GetString(1);
+                        string addressId = sqlite_datareader.GetString(2);
+                        string type = sqlite_datareader.GetString(3);
+                        string comment = sqlite_datareader.GetString(4);
+                        string locationId = sqlite_datareader.GetString(5);
+
+                        SQLiteConnect.CloseConnections(sqlite_datareader);
+                        return new Place(name, addressId, type, comment, locationId) //By creating a new entity, we are changing the id. Good - security, bad - ??
+                        {
+                            id = placeIdOrig,
+                            name = name,
+                            addressId= addressId,
+                            type = type,
+                            comment = comment,
+                            locationId = locationId, 
+                        };
+                    }
+                    SQLiteConnect.CloseConnections(sqlite_datareader);
+                    return null;
+                }*/
 
         // GetPlaceByType(string placeType)
         // GetPlaceByName(string placeName)
