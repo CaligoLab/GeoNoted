@@ -53,7 +53,7 @@ namespace Geonote.Repositories
             SQLiteConnect.CloseConnections(sqlite_datareader);
             return null;
         }
-
+        //comment
         public CategoryRepository()
         {
         }
