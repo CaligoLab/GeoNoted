@@ -1,6 +1,8 @@
 ﻿using Geonote.Models;
+using Microsoft.CodeAnalysis.VisualBasic;
 using System;
 using System.Data.SQLite;
+using System.Net.NetworkInformation;
 
 namespace Geonote.Repositories
 {
@@ -10,7 +12,7 @@ namespace Geonote.Repositories
 
         public static void AddNewCategory(string categoryName)
         {
-            var id = Guid.NewGuid();   
+            var id = Guid.NewGuid();
             SQLTableManagement.InsertData(CategoryTableName, "Id, Name", $"\" {id}\", \"{categoryName}\"");
         }
 
@@ -52,7 +54,30 @@ namespace Geonote.Repositories
             SQLiteConnect.CloseConnections(sqlite_datareader);
             return null;
         }
+<<<<<<< Updated upstream
         //comment
+=======
+
+
+        public static void UpdateCategoryNameById(string name, string id)
+        {
+            var clause = $"Id = \"{id}\"";
+            var setName = $"Name = \"{name}\"";
+            SQLTableManagement.UpdateData(CategoryTableName, setName, clause);
+        }
+
+        public static void DeleteCategoryById(string id)
+        {
+            var clause = $"Id = \"{id}\"";
+            SQLTableManagement.DeleteData(CategoryTableName, clause);
+        }
+
+        public static void DeleteCategoryByName(string name)
+        {
+            var clause = $"Name = \"{name}\"";
+            SQLTableManagement.DeleteData(CategoryTableName, clause);
+        }
+>>>>>>> Stashed changes
         public CategoryRepository()
         {
         }
