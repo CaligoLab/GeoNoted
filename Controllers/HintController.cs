@@ -30,5 +30,11 @@ namespace Geonote.Controllers
         {
             return HintRepository.GetHint(hintId);
         }
+
+        [HttpPost]
+        public void CreateNewHint([FromBody] Hint hint)
+        {
+            HintRepository.AddNewHint(hint.Name, hint.Id, hint.Category, hint.Location);
+        }
     }
 }
