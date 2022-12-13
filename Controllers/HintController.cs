@@ -23,5 +23,12 @@ namespace Geonote.Controllers
         {
             return HintRepository.GetAllHints();
         }
+
+
+        [HttpGet ("{hintId}")]
+        public Hint? GetHintsWithDetails(string hintId)
+        {
+            return HintRepository.GetHint(hintId);
+        }
     }
 }
