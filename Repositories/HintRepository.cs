@@ -48,22 +48,25 @@ namespace Geonote.Repositories
             return null;
         }
 
-        public static List<Hint> GetAllHints()
+        public static List<Hint> AllHints
         {
-            var allHints = new List<Hint>();
-            var sqlite_datareader = SQLTableManagement.ReadData(HintTableName, null);
-            while (sqlite_datareader.Read())
+            get
             {
-                string id = sqlite_datareader.GetString(0);
-                string name = sqlite_datareader.GetString(1);
-                allHints.Add(new Hint
+                var allHints = new List<Hint>();
+                var sqlite_datareader = SQLTableManagement.ReadData(HintTableName, null);
+                while (sqlite_datareader.Read())
                 {
-                    Id = id,
-                    Name = name
-                });
+                    string id = sqlite_datareader.GetString(0);
+                    string name = sqlite_datareader.GetString(1);
+                    allHints.Add(new Hint
+                    {
+                        Id = id,
+                        Name = name
+                    });
+                }
+                SQLiteConnect.CloseConnections(sqlite_datareader);
+                return allHints;
             }
-            SQLiteConnect.CloseConnections(sqlite_datareader);
-            return allHints;
         }
 
         public static void UpdateHintNameById(string id, string name)

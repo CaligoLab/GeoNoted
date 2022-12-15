@@ -21,7 +21,7 @@ namespace Geonote.Controllers
 
         public List<Hint> GetAllHints()
         {
-            return HintRepository.GetAllHints();
+            return HintRepository.AllHints;
         }
 
 
@@ -35,6 +35,21 @@ namespace Geonote.Controllers
         public void CreateNewHint([FromBody] Hint hint)
         {
             HintRepository.AddNewHint(hint.Name, hint.Id, hint.Category, hint.Location);
+        }
+
+        [HttpDelete("{hintId}")]
+        public void DeleteHint(string hintId)
+        {
+            HintRepository.DeleteHintById(hintId);
+        }
+
+
+        [HttpPut("{hintId}")]
+        public Hint? UpdateHint(string hintId, [FromBody] string hintName)
+        {
+
+            HintRepository.UpdateHintNameById(hintId, hintName);
+            return HintRepository.GetHint(hintId);
         }
     }
 }
