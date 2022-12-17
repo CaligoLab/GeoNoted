@@ -32,17 +32,17 @@ app.MapControllerRoute(
 //Geonote.Repositories.Migrations.Run();
 //var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
 //Geonote.Repositories.Migrations.run(sqliteConnection);
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 
 
-=======
+//=======
 /*var errand = new Geonote.Models.Errand()
 {
     Name = "first",
     Comment = "smth"
 };
 Geonote.Repositories.ErrandRepository.AddNewErrand(errand);*/
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 /*
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
