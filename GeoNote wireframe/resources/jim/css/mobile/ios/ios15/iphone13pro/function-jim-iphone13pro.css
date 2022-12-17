@@ -1,0 +1,12 @@
+/* start iPhone 13 Pro css values*/
+body.iphone13pro #jim-mobile { position:relative; top:0px; left:0px; width:438px; height:886px; margin:auto; }
+body.iphone13pro #jim-case { background-image: url("../../../../../images/mobile/ios/ios15/iphone13pro@2x.png"); height:886px; width:438px; background-size:100% auto; z-index:100; /*must be over keyboards and comment bubbles*/ position:absolute; pointer-events:none; }
+body.iphone13pro #jim-mobile #simulation { position: relative; height: 100%; overflow:hidden; }
+body.iphone13pro #jim-mobile .ui-page { overflow:hidden; }
+
+/* orientation values */
+body.iphone13pro #jim-mobile.landscape { height:438px; width:886px; }
+body.iphone13pro #jim-case.portrait { transform:rotate(0deg); transform-origin:auto; }
+body.iphone13pro #jim-case.landscape { top:-2px; left:3px; transform:rotate(-90deg); transform-origin:57% 25% 0; }
+body.iphone13pro #jim-container.portrait { position: absolute; top: 21px; left: 24.5px; width: 390px; height: 844px; }
+body.iphone13pro #jim-container.landscape { position: absolute; top: 24.5px; left: 21px; width: 844px; height: 390px; }
