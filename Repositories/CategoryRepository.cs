@@ -54,9 +54,6 @@ namespace Geonote.Repositories
             SQLiteConnect.CloseConnections(sqlite_datareader);
             return null;
         }
-<<<<<<< Updated upstream
-        //comment
-=======
 
 
         public static void UpdateCategoryNameById(string name, string id)
@@ -77,7 +74,7 @@ namespace Geonote.Repositories
             var clause = $"Name = \"{name}\"";
             SQLTableManagement.DeleteData(CategoryTableName, clause);
         }
->>>>>>> Stashed changes
+
         public CategoryRepository()
         {
         }
