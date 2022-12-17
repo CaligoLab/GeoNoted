@@ -169,7 +169,7 @@ namespace Geonote.Repositories
                     var placeId = sqlite_datareader.GetString(10);
                     var placeName = sqlite_datareader.GetString(11);
                     if(place == null)
-                    place = new Place ("Ica")
+                    place = new Place ("")
                     {
                         Id = placeId,
                         Name = placeName

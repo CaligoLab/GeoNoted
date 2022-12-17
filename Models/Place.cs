@@ -2,8 +2,6 @@
 {
     public class Place
     {
-        private string v;
-
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -23,9 +21,9 @@
 
         }*/
 
-        public Place(string v)
+        public Place(string placeName)
         {
-            this.v = v;
+            this.Name = placeName;
         }
     }
 }

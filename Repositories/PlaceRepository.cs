@@ -14,7 +14,8 @@ namespace Geonote.Repositories
 
         public static void AddNewPlace(Place place)
         {
-            
+            if (place.Id == null) { place.Id = Guid.NewGuid().ToString(); }
+
             var columnNames = "Id, Name";
             var columnValues = $"\"{place.Id}\", \"{place.Name}\"";
 
