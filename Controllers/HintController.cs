@@ -21,7 +21,7 @@ namespace Geonote.Controllers
 
         public List<Hint> GetAllHints()
         {
-            return HintRepository.AllHints;
+            return HintRepository.GetAllHints();
         }
 
 

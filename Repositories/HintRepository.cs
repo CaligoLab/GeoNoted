@@ -7,7 +7,7 @@ namespace Geonote.Repositories
     {
         private static readonly string HintTableName = "Hint";
 
-        public static void AddNewHint(string hintName, string hintId, Categorу? category, Location? location)
+        public static void AddNewHint(string hintName, string? hintId, Categorу? category, Location? location)
         {
             var id = Guid.NewGuid();
 
@@ -48,25 +48,22 @@ namespace Geonote.Repositories
             return null;
         }
 
-        public static List<Hint> AllHints
+        public static List<Hint> GetAllHints()
         {
-            get
+            var allHints = new List<Hint>();
+            var sqlite_datareader = SQLTableManagement.ReadData(HintTableName, null);
+            while (sqlite_datareader.Read())
             {
-                var allHints = new List<Hint>();
-                var sqlite_datareader = SQLTableManagement.ReadData(HintTableName, null);
-                while (sqlite_datareader.Read())
+                string id = sqlite_datareader.GetString(0);
+                string name = sqlite_datareader.GetString(1);
+                allHints.Add(new Hint
                 {
-                    string id = sqlite_datareader.GetString(0);
-                    string name = sqlite_datareader.GetString(1);
-                    allHints.Add(new Hint
-                    {
-                        Id = id,
-                        Name = name
-                    });
-                }
-                SQLiteConnect.CloseConnections(sqlite_datareader);
-                return allHints;
+                    Id = id,
+                    Name = name
+                });
             }
+            SQLiteConnect.CloseConnections(sqlite_datareader);
+            return allHints;
         }
 
         public static void UpdateHintNameById(string id, string name)
@@ -89,4 +86,3 @@ namespace Geonote.Repositories
         }
     }
 }
-
