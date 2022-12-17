@@ -1,6 +1,7 @@
 ﻿using Geonote.Models;
 using System;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace Geonote.Repositories
 {

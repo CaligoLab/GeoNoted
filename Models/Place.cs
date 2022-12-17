@@ -2,6 +2,8 @@
 {
     public class Place
     {
+        private string v;
+
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -10,7 +12,7 @@
         public string? Comment { get; set; }
         public string? LocationId { get; set; }
 
-        public Place(string placeName, string? placeAddressId, string? placeCategory, string? placeComment, string? placeLocationId)
+       /* public Place(string placeName, string? placeAddressId, string? placeCategory, string? placeComment, string? placeLocationId)
         {
             Id = Guid.NewGuid().ToString();
             Name = placeName;
@@ -19,6 +21,11 @@
             Comment = placeComment;
             LocationId = placeLocationId;
 
+        }*/
+
+        public Place(string v)
+        {
+            this.v = v;
         }
     }
 }
