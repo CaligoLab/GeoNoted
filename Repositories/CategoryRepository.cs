@@ -1,6 +1,8 @@
 ﻿using Geonote.Models;
+using Microsoft.CodeAnalysis.VisualBasic;
 using System;
 using System.Data.SQLite;
+using System.Net.NetworkInformation;
 
 namespace Geonote.Repositories
 {
@@ -10,8 +12,8 @@ namespace Geonote.Repositories
 
         public static void AddNewCategory(string categoryName)
         {
-            var id = Guid.NewGuid();   
-            SQLTableManagement.InsertData(CategoryTableName, "Id, Name", $"\" {id}\", \"{categoryName}\"");
+            var id = Guid.NewGuid();
+            SQLTableManagement.InsertData(CategoryTableName, "Id, Name", $"\"{id}\", \"{categoryName}\"");
         }
 
         public static List<Categorу> GetAllCategories()
@@ -38,7 +40,7 @@ namespace Geonote.Repositories
         {
             SQLiteConnect.GetSQLiteConnection();
             var clause = $"Id = \"{categoryId}\"";
-            var sqlite_datareader = SQLTableManagement.ReadData(CategoryTableName, null);
+            var sqlite_datareader = SQLTableManagement.ReadData(CategoryTableName, clause);
             while (sqlite_datareader.Read())
             {
                 string categoryName = sqlite_datareader.GetString(1);
@@ -51,6 +53,26 @@ namespace Geonote.Repositories
             }
             SQLiteConnect.CloseConnections(sqlite_datareader);
             return null;
+        }
+
+
+        public static void UpdateCategoryNameById(string name, string id)
+        {
+            var clause = $"Id = \"{id}\"";
+            var setName = $"Name = \"{name}\"";
+            SQLTableManagement.UpdateData(CategoryTableName, setName, clause);
+        }
+
+        public static void DeleteCategoryById(string id)
+        {
+            var clause = $"Id = \"{id}\"";
+            SQLTableManagement.DeleteData(CategoryTableName, clause);
+        }
+
+        public static void DeleteCategoryByName(string name)
+        {
+            var clause = $"Name = \"{name}\"";
+            SQLTableManagement.DeleteData(CategoryTableName, clause);
         }
 
         public CategoryRepository()
