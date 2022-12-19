@@ -13,7 +13,7 @@ namespace Geonote.Repositories
         public static void AddNewCategory(string categoryName)
         {
             var id = Guid.NewGuid();
-            SQLTableManagement.InsertData(CategoryTableName, "Id, Name", $"\" {id}\", \"{categoryName}\"");
+            SQLTableManagement.InsertData(CategoryTableName, "Id, Name", $"\"{id}\", \"{categoryName}\"");
         }
 
         public static List<Categorу> GetAllCategories()
@@ -40,7 +40,7 @@ namespace Geonote.Repositories
         {
             SQLiteConnect.GetSQLiteConnection();
             var clause = $"Id = \"{categoryId}\"";
-            var sqlite_datareader = SQLTableManagement.ReadData(CategoryTableName, null);
+            var sqlite_datareader = SQLTableManagement.ReadData(CategoryTableName, clause);
             while (sqlite_datareader.Read())
             {
                 string categoryName = sqlite_datareader.GetString(1);
