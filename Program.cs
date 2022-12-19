@@ -44,11 +44,11 @@ var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
 var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithAllFields("b6621fa5-7b6b-47c7-bd60-339b245a792a");
 */
-Geonote.Repositories.CategoryRepository.UpdateCategoryNameById("WomanBeauty", "b50f69b5-b878-485b-a794-2de48808123b");
+//Geonote.Repositories.CategoryRepository.UpdateCategoryNameById("WomanBeauty", "b50f69b5-b878-485b-a794-2de48808123b");
 
 //Geonote.Repositories.CategoryRepository.AddNewCategory("AutoService");
 //Geonote.Repositories.CategoryRepository.AddNewCategory("Beauty");
 //var categoryById = Geonote.Repositories.CategoryRepository.GetCategory("2badb9c6-a0ad-40ac-8f17-8eeda659633f");
-//var getAllCategoties = Geonote.Repositories.CategoryRepository.GetAllCategories();
-//var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategoties[0].Id);
+//var getAllCategories = Geonote.Repositories.CategoryRepository.GetAllCategories();
+//var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategories[2].Id);
 app.Run();
