@@ -49,10 +49,27 @@ var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithAllFields("b6621fa5-7b6b-47c7-bd60-339b245a792a");
 */
 
+/*var place = new Place("Ica Nära Ektorp");
 
-//Geonote.Repositories.CategoryRepository.AddNewCategory("AutoService");
+Geonote.Repositories.PlaceRepository.AddNewPlace(place);
+var place2 = new Place("Ica Maxi Nacka");
+
+Geonote.Repositories.PlaceRepository.AddNewPlace(place2);
+
+var place3 = new Place("Hemköp Nacka Forum");
+
+Geonote.Repositories.PlaceRepository.AddNewPlace(place3);
+*/
 //Geonote.Repositories.CategoryRepository.AddNewCategory("Beauty");
 //var categoryById = Geonote.Repositories.CategoryRepository.GetCategory("2badb9c6-a0ad-40ac-8f17-8eeda659633f");
 //var getAllCategoties = Geonote.Repositories.CategoryRepository.GetAllCategories();
 //var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategoties[0].Id);
+
+/*var allPlacesList = Geonote.Repositories.PlaceRepository.GetAllPlaces();
+foreach (var place in allPlacesList)
+{
+    Console.WriteLine(place);
+}
+*/
+
 app.Run();
