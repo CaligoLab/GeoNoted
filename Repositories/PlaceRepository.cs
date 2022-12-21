@@ -9,17 +9,19 @@ namespace Geonote.Repositories
 {
     public class PlaceRepository
     {
-        private static readonly string placeTableName = "Place";
+        private static readonly string PlaceTableName = "Place";
 
         public static void AddNewPlace(Place place)
         {
-            
+            if (place.Id == null)
+            { place.Id = Guid.NewGuid().ToString(); }
+
             var columnNames = "Id, Name";
             var columnValues = $"\"{place.Id}\", \"{place.Name}\"";
 
             if (place.Comment != null)
             { columnNames += ", Comment"; columnValues += $", \"{place.Comment}\""; }
-            
+
             if (place.AddressId != null)
             { columnNames += ", AddressId"; columnValues += $", \"{place.AddressId}\""; }
 
@@ -30,16 +32,16 @@ namespace Geonote.Repositories
             { columnNames += ", LocationId"; columnValues += $", \"{place.LocationId}\""; }
 
 
-            SQLTableManagement.InsertData(placeTableName, columnNames, columnValues);
+            SQLTableManagement.InsertData(PlaceTableName, columnNames, columnValues);
         }
         /* 
                 public static List<Place>? GetPlaceById(string placeId)
                 {
                    var newConnection = SQLiteConnect.CreateConnection();
-                    var output = newConnection.Query<Place>($"SELECT * FROM {placeTableName} WHERE id = \"{placeId}\" "); //check syntax for parametres in Dapper
+                    var output = newConnection.Query<Place>($"SELECT * FROM {PlaceTableName} WHERE id = \"{placeId}\" "); //check syntax for parametres in Dapper
                     return output.ToList();
                    string clause = $"id = \"{placeIdOrig}\"";
-                    var sqlite_datareader = SQLTableManagement.ReadData(placeTableName, clause);
+                    var sqlite_datareader = SQLTableManagement.ReadData(PlaceTableName, clause);
                     while (sqlite_datareader.Read())
                     {
                         string name = sqlite_datareader.GetString(1);
@@ -66,6 +68,80 @@ namespace Geonote.Repositories
         // GetPlaceByType(string placeType)
         // GetPlaceByName(string placeName)
 
+        public static List<Place> GetAllPlaces()
+        {
+
+            var allPlaces = new List<Place>();
+            var sqlite_datareader = SQLTableManagement.ReadData(PlaceTableName, null);
+
+            while (sqlite_datareader.Read())
+            {
+                string id = sqlite_datareader.GetString(0);
+                string name = sqlite_datareader.GetString(1);
+                string? addressId = null;
+                string? category = null;
+                string? comment = null;
+                string? locationId = null;
+
+
+                if (sqlite_datareader[2] != DBNull.Value) { addressId = sqlite_datareader.GetString(2); }
+                if (sqlite_datareader[3] != DBNull.Value) { category = sqlite_datareader.GetString(3); }
+                if (sqlite_datareader[4] != DBNull.Value) { comment = sqlite_datareader.GetString(4); }
+                if (sqlite_datareader[5] != DBNull.Value) { locationId = sqlite_datareader.GetString(5); }
+
+                allPlaces.Add(new Place
+                {
+                    Id = id,
+                    Name = name,
+                    AddressId = addressId,
+                    Category = category,
+                    Comment = comment,
+                    LocationId = locationId,
+
+                }); ;
+            }
+
+            SQLiteConnect.CloseConnections(sqlite_datareader);
+            return allPlaces;
+        }
+
+        public static Place? GetPlaceById(string placeId)
+        {
+            var clause = $"Id = \"{placeId}\"";
+            var sqlite_datareader = SQLTableManagement.ReadData(PlaceTableName, clause);
+            while (sqlite_datareader.Read())
+            {
+                string placeName = sqlite_datareader.GetString(1);
+                string? addressId = null;
+                string? category = null;
+                string? comment = null;
+                string? locationId = null;
+
+
+                if (sqlite_datareader[2] != DBNull.Value) { addressId = sqlite_datareader.GetString(2); }
+                if (sqlite_datareader[3] != DBNull.Value) { category = sqlite_datareader.GetString(3); }
+                if (sqlite_datareader[4] != DBNull.Value) { comment = sqlite_datareader.GetString(4); }
+                if (sqlite_datareader[5] != DBNull.Value) { locationId = sqlite_datareader.GetString(5); }
+
+                SQLiteConnect.CloseConnections(sqlite_datareader);
+
+                return new Place
+                {
+                    Id = placeId,
+                    Name = placeName,
+                    AddressId = addressId,
+                    Category = category,
+                    Comment = comment,
+                    LocationId = locationId,
+
+                };
+            }
+
+            SQLiteConnect.CloseConnections(sqlite_datareader);
+            return null;
+
+        }
+
         public static void UpdatePlaceById(string id, Place place)
         {
             var setValues = "";
@@ -77,19 +153,19 @@ namespace Geonote.Repositories
             setValues += $", Comment = \"{place.Comment}\"";
             setValues += $", LocationId = \"{place.LocationId}\"";
 
-            SQLTableManagement.UpdateData(placeTableName, setValues, clause);
+            SQLTableManagement.UpdateData(PlaceTableName, setValues, clause);
         }
 
         public static void DeletePlaceById(string id)
         {
             var clause = $"Id = \"{id}\"";
-            SQLTableManagement.DeleteData(placeTableName, clause);
+            SQLTableManagement.DeleteData(PlaceTableName, clause);
         }
 
         public static void DeletePlaceByName(string name)
         {
             var clause = $"Name = \"{name}\"";
-            SQLTableManagement.DeleteData(placeTableName, clause);
+            SQLTableManagement.DeleteData(PlaceTableName, clause);
         }
 
     }

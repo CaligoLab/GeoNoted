@@ -21,9 +21,9 @@
 
         }*/
 
-        public Place(string v)
+        public Place()
         {
-            this.Name = v;
+            
         }
     }
 }
