@@ -1,6 +1,7 @@
 ﻿using Geonote.Models;
 using Microsoft.AspNetCore.Http.Features;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using System.Xml.Linq;
 
 namespace Geonote.Repositories

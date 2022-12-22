@@ -1,7 +1,8 @@
 using Geonote.Models;
 using Microsoft.AspNetCore.Http.Features;
 using System.Data;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -13,7 +14,8 @@ namespace Geonote.Repositories
 
         public static void AddNewPlace(Place place)
         {
-            
+            if (place.Id == null) { place.Id = Guid.NewGuid().ToString(); }
+
             var columnNames = "Id, Name";
             var columnValues = $"\"{place.Id}\", \"{place.Name}\"";
 
