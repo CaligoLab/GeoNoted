@@ -1,14 +1,17 @@
 global using Microsoft.EntityFrameworkCore.Sqlite;
 global using Microsoft.Data.Sqlite;
+global using Geonote.Data;
 using Geonote.Models;
 using Geonote.Repositories;
 using System.Runtime.ExceptionServices;
-
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

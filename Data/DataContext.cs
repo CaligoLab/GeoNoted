@@ -1,5 +1,6 @@
 ﻿
 
+using Geonote.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Geonote.Data
@@ -10,5 +11,8 @@ namespace Geonote.Data
         {
             
         }
+
+        public DbSet<Place> Place => Set<Place>();
+
     }
 }
