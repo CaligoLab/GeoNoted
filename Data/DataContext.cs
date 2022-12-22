@@ -12,7 +12,6 @@ namespace Geonote.Data
             
         }
 
-        public DbSet<Place> Place => Set<Place>();
-
+        public DbSet<User> User => Set<User>();
     }
 }
