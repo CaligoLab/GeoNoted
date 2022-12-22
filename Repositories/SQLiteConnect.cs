@@ -1,18 +1,15 @@
 ﻿
-using System.Data.Entity;
-using System.Data.SQLite;
-
 namespace Geonote.Repositories
 {
     public class SQLiteConnect
     {
-        private static SQLiteConnection _conn;
+        private static SqliteConnection _conn;
 
 
-        public static SQLiteConnection CreateConnection()
+        public static SqliteConnection CreateConnection()
         {
 
-            SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=database.db; Version = 3; New = True; Compress = True;");
+            SqliteConnection sqlite_conn = new SqliteConnection("Data Source=database.db; Version = 3; New = True; Compress = True;");
             // Open the connection:
             try
             {
@@ -25,7 +22,7 @@ namespace Geonote.Repositories
             return sqlite_conn;
         }
 
-        public static SQLiteConnection GetSQLiteConnection()
+        public static SqliteConnection GetSQLiteConnection()
         {
             if (_conn == null)
             {
@@ -38,7 +35,7 @@ namespace Geonote.Repositories
             return _conn;
         }
 
-        public static void CloseConnections(SQLiteDataReader sqlite_datareader)
+        public static void CloseConnections(SqliteDataReader sqlite_datareader)
         {
             sqlite_datareader.Close();
             GetSQLiteConnection().Close();

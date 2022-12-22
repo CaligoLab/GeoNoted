@@ -1,5 +1,4 @@
-﻿using System.Data.SQLite;
-
+﻿
 namespace Geonote.Repositories
 {
     public class Migrations

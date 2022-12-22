@@ -1,6 +1,6 @@
 ﻿using Geonote.Models;
 using Microsoft.AspNetCore.Http.Features;
-using System.Data.SQLite;
+
 
 namespace Geonote.Repositories
 {
@@ -83,7 +83,7 @@ namespace Geonote.Repositories
                 "LEFT JOIN Location ON Errand.LocationId = Location.Id\n" +
                 "LEFT JOIN Place ON Errand.PlaceId = Place.Id\n" +
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
-            SQLiteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
+            SqliteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
             Errand errand = null;
             Categorу category = null;
             Location location = null;

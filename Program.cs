@@ -1,7 +1,9 @@
+global using Microsoft.EntityFrameworkCore.Sqlite;
+global using Microsoft.Data.Sqlite;
 using Geonote.Models;
 using Geonote.Repositories;
-using System.Data.SQLite;
 using System.Runtime.ExceptionServices;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +31,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-Geonote.Repositories.Migrations.Run();
+//Geonote.Repositories.Migrations.Run();
 //var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 //<<<<<<< Updated upstream
