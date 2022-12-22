@@ -61,5 +61,8 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 
 //var categoryById = Geonote.Repositories.CategoryRepository.GetCategory("2badb9c6-a0ad-40ac-8f17-8eeda659633f");
 //var getAllCategoties = Geonote.Repositories.CategoryRepository.GetAllCategories();
-//var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategoties[0].Id);
+//var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategories[0].Id);
+
+Geonote.Repositories.HintRepository.UpdateHintNameById("adfcb3f2-b8b0-4be6-b15a-c389e51a774d", "förskola" );
+
 app.Run();
