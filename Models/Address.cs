@@ -4,9 +4,9 @@
     {
         public string Id { get; set; }
 
-        public string? Postcode { get; set; } //may it be Null?
+        public string? Postcode { get; set; } //may it be Null? //Mari: i think postcode cant ne null
 
-        public string? Country { get; set; }
+        public string? Country { get; set; } //Mari: i think country also cant be null
         public string? County { get; set; }
         public string? Settlement { get; set; }
         public string Street { get; set; }

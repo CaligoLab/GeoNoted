@@ -8,7 +8,7 @@ namespace Geonote.Models
 
         public string Longitude { get; set; }
 
-        public Place Place { get; set; }
+        public Place Place { get; set; } //Mari: if we have locationId in Pace, do we also need place obj here?
 
         public Location()
         {
