@@ -24,7 +24,7 @@ namespace Geonote.Controllers
             return LocationRepository.GetLocation(id);
         }
         /*[HttpGet("places")]
-        public List<Location>? GetLocationsWithAllPlaces()
+        public List<Location>? GetLocationsWithPlaces()
         {
 
         }*/
