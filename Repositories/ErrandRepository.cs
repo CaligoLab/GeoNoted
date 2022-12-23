@@ -25,6 +25,12 @@ namespace Geonote.Repositories
             if (errand.Location != null)
             { columnNames += ", LocationId"; columnValues += $", \"{errand.Location.Id}\""; }
 
+            if (errand.Address != null)
+            { columnNames += ", AddressId"; columnValues += $", \"{errand.Address.Id}\""; }
+
+            if (errand.Place != null)
+            { columnNames += ", PlaceId"; columnValues += $", \"{errand.Place.Id}\""; }
+
             SQLTableManagement.InsertData(ErrandTableName, columnNames, columnValues);
         }
 
@@ -82,6 +88,7 @@ namespace Geonote.Repositories
                 "LEFT JOIN Category ON Errand.CategoryId = Category.Id\n" +
                 "LEFT JOIN Item ON Errand.Id = Item.ErrandId\n" +
                 "LEFT JOIN Location ON Errand.LocationId = Location.Id\n" +
+                //"LEFT JOIN Address ON Errand.AddressId = Address.Id\n" + //I need full address obj?
                 "LEFT JOIN Place ON Errand.PlaceId = Place.Id\n" +
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
             SqliteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
@@ -164,7 +171,7 @@ namespace Geonote.Repositories
                     }
                 }
 
-                /*if (sqlite_datareader[10] != DBNull.Value)
+                if (sqlite_datareader[10] != DBNull.Value)
                 {
                     var placeId = sqlite_datareader.GetString(10);
                     var placeName = sqlite_datareader.GetString(11);
@@ -175,7 +182,7 @@ namespace Geonote.Repositories
                         Name = placeName
                     };
                     location.Place = place;
-                }*/
+                }
             }
             return errand;
         }
@@ -196,7 +203,7 @@ namespace Geonote.Repositories
             { setName += $"Comment = \"{errand.Comment}\""; }
                 
             SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
-        }
+        }// do need i to add Location, Place, Address
 
         public static void DeleteErrandById(string id)
         {
