@@ -1,6 +1,6 @@
 using Geonote.Models;
 using Geonote.Repositories;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.Runtime.ExceptionServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +29,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-Geonote.Repositories.Migrations.Run();
+//Geonote.Repositories.Migrations.Run();
 //var sqliteConnection = Geonote.Repositories.SQLiteConnect.CreateConnection();
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 /*var errand = new Geonote.Models.Errand()
@@ -53,5 +53,5 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 
 //Geonote.Repositories.LocationRepository.AddNewLocation("0.700", "5.00", null);
 
-Geonote.Repositories.PlaceRepository.AddNewPlace("ATB", null, "Beauty", null, "f0356fe4-cdbe-485c-8dd1-5ff258db3d0c");
+//Geonote.Repositories.PlaceRepository.AddNewPlace("ATB", null, "Beauty", null, "f0356fe4-cdbe-485c-8dd1-5ff258db3d0c");
 app.Run();

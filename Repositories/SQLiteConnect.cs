@@ -1,5 +1,5 @@
 ﻿
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Data.Sqlite;
 
 namespace Geonote.Repositories
