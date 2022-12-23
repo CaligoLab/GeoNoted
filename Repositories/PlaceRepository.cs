@@ -12,8 +12,10 @@ namespace Geonote.Repositories
 
         public static void AddNewPlace(Place place)
         {
-            if (place.Id == null)
-            { place.Id = Guid.NewGuid().ToString(); }
+           // if (place.Id == null)
+            //{
+            place.Id = Guid.NewGuid().ToString(); 
+        //}
 
             var columnNames = "Id, Name";
             var columnValues = $"\"{place.Id}\", \"{place.Name}\"";
@@ -21,6 +23,8 @@ namespace Geonote.Repositories
             if (place.Comment != null)
             { columnNames += ", Comment"; columnValues += $", \"{place.Comment}\""; }
 
+           //columnNames += ", Comment"; columnValues += $", \"{place.Comment}\"";
+           
             if (place.AddressId != null)
             { columnNames += ", AddressId"; columnValues += $", \"{place.AddressId}\""; }
 
@@ -30,39 +34,8 @@ namespace Geonote.Repositories
             if (place.LocationId != null)
             { columnNames += ", LocationId"; columnValues += $", \"{place.LocationId}\""; }
 
-
             SQLTableManagement.InsertData(PlaceTableName, columnNames, columnValues);
         }
-        /* 
-                public static List<Place>? GetPlaceById(string placeId)
-                {
-                   var newConnection = SQLiteConnect.CreateConnection();
-                    var output = newConnection.Query<Place>($"SELECT * FROM {PlaceTableName} WHERE id = \"{placeId}\" "); //check syntax for parametres in Dapper
-                    return output.ToList();
-                   string clause = $"id = \"{placeIdOrig}\"";
-                    var sqlite_datareader = SQLTableManagement.ReadData(PlaceTableName, clause);
-                    while (sqlite_datareader.Read())
-                    {
-                        string name = sqlite_datareader.GetString(1);
-                        string addressId = sqlite_datareader.GetString(2);
-                        string type = sqlite_datareader.GetString(3);
-                        string comment = sqlite_datareader.GetString(4);
-                        string locationId = sqlite_datareader.GetString(5);
-
-                        SQLiteConnect.CloseConnections(sqlite_datareader);
-                        return new Place(name, addressId, type, comment, locationId) //By creating a new entity, we are changing the id. Good - security, bad - ??
-                        {
-                            id = placeIdOrig,
-                            name = name,
-                            addressId= addressId,
-                            type = type,
-                            comment = comment,
-                            locationId = locationId, 
-                        };
-                    }
-                    SQLiteConnect.CloseConnections(sqlite_datareader);
-                    return null;
-                }*/
 
         // GetPlaceByType(string placeType)
         // GetPlaceByName(string placeName)
@@ -129,7 +102,7 @@ namespace Geonote.Repositories
                     Id = placeId,
                     Name = placeName,
                     AddressId = addressId,
-                    Category = category,
+                    Category = category, 
                     Comment = comment,
                     LocationId = locationId,
 

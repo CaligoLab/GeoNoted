@@ -7,8 +7,8 @@ using System.Collections.Generic;
 
 namespace Geonote.Controllers
 {
-    
-    [Route("api/place")]
+    [ApiController]
+    [Route("api/[controller]")]
     public class PlaceController : Controller
     {
         
@@ -18,7 +18,7 @@ namespace Geonote.Controllers
         }
 
         [HttpGet]
-        public List<Place> GetAllPlaces()
+        public ActionResult<List<Place>> GetAllPlaces()
         {
             return PlaceRepository.GetAllPlaces();
 
