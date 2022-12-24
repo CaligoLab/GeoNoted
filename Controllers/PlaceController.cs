@@ -18,23 +18,23 @@ namespace Geonote.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Place>> GetAllPlaces()
+        public ActionResult<ServiceResponce<List<Place>>> GetAllPlaces()
         {
             return PlaceRepository.GetAllPlaces();
 
         }
 
         [HttpGet("{placeId}")] 
-        public Place? GetPlaceByID(string placeId)
+        public ServiceResponce<Place?> GetPlaceByID(string placeId)
         {
             return PlaceRepository.GetPlaceById(placeId);
         }
 
         [HttpPost ]
 
-        public void CreateNewPlace([FromBody] Place place)
+        public ServiceResponce<Place?> CreateNewPlace([FromBody] Place place)
         {
-            PlaceRepository.AddNewPlace(place);
+            return PlaceRepository.AddNewPlace(place);
         }
         
     }

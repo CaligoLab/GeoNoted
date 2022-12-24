@@ -10,9 +10,10 @@ namespace Geonote.Repositories
     {
         private static readonly string PlaceTableName = "Place";
 
-        public static void AddNewPlace(Place place)
+        public static ServiceResponce<Place?> AddNewPlace(Place place)
         {
-           // if (place.Id == null)
+           var serviceResponce = new ServiceResponce<Place?>();
+            // if (place.Id == null)
             //{
             place.Id = Guid.NewGuid().ToString(); 
         //}
@@ -35,13 +36,16 @@ namespace Geonote.Repositories
             { columnNames += ", LocationId"; columnValues += $", \"{place.LocationId}\""; }
 
             SQLTableManagement.InsertData(PlaceTableName, columnNames, columnValues);
+            
+            return serviceResponce;
         }
 
         // GetPlaceByType(string placeType)
         // GetPlaceByName(string placeName)
 
-        public static List<Place> GetAllPlaces()
+        public static ServiceResponce<List<Place>> GetAllPlaces()
         {
+            var serviceResponce = new ServiceResponce<List<Place>>();
 
             var allPlaces = new List<Place>();
             var sqlite_datareader = SQLTableManagement.ReadData(PlaceTableName, null);
@@ -74,11 +78,17 @@ namespace Geonote.Repositories
             }
 
             SQLiteConnect.CloseConnections(sqlite_datareader);
-            return allPlaces;
+
+            serviceResponce.Data = allPlaces;
+            serviceResponce.Message = "Here are all your Places";
+
+            return serviceResponce;
         }
 
-        public static Place? GetPlaceById(string placeId)
+        public static ServiceResponce<Place?> GetPlaceById(string placeId)
         {
+            var serviceResponce = new ServiceResponce<Place?>();
+
             var clause = $"Id = \"{placeId}\"";
             var sqlite_datareader = SQLTableManagement.ReadData(PlaceTableName, clause);
             while (sqlite_datareader.Read())
@@ -97,7 +107,7 @@ namespace Geonote.Repositories
 
                 SQLiteConnect.CloseConnections(sqlite_datareader);
 
-                return new Place
+                var returnedPlace = new Place
                 {
                     Id = placeId,
                     Name = placeName,
@@ -107,15 +117,26 @@ namespace Geonote.Repositories
                     LocationId = locationId,
 
                 };
+
+                serviceResponce.Data = returnedPlace;
+                serviceResponce.Message = "Here's the Place you asked for";
+
+                return serviceResponce;
             }
 
             SQLiteConnect.CloseConnections(sqlite_datareader);
-            return null;
+
+            serviceResponce.Success = false;
+            serviceResponce.Message = "There's no such Place in your Organizer";
+
+            return serviceResponce;
 
         }
 
-        public static void UpdatePlaceById(string id, Place place)
+        public static ServiceResponce<Place?> UpdatePlaceById(string id, Place place)
         {
+            var serviceResponce = new ServiceResponce<Place?>();
+
             var setValues = "";
             var clause = $"Id = \"{id}\"";
 
@@ -126,18 +147,28 @@ namespace Geonote.Repositories
             setValues += $", LocationId = \"{place.LocationId}\"";
 
             SQLTableManagement.UpdateData(PlaceTableName, setValues, clause);
+
+            return serviceResponce;
         }
 
-        public static void DeletePlaceById(string id)
+        public static ServiceResponce<Place?> DeletePlaceById(string id)
         {
+            var serviceResponce = new ServiceResponce<Place?>();
+
             var clause = $"Id = \"{id}\"";
             SQLTableManagement.DeleteData(PlaceTableName, clause);
+
+            return serviceResponce;
         }
 
-        public static void DeletePlaceByName(string name)
+        public static ServiceResponce<Place?> DeletePlaceByName(string name)
         {
+            var serviceResponce = new ServiceResponce<Place?>();
+
             var clause = $"Name = \"{name}\"";
             SQLTableManagement.DeleteData(PlaceTableName, clause);
+
+            return serviceResponce;
         }
 
     }
