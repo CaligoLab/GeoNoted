@@ -36,7 +36,9 @@ namespace Geonote.Repositories
             { columnNames += ", LocationId"; columnValues += $", \"{place.LocationId}\""; }
 
             SQLTableManagement.InsertData(PlaceTableName, columnNames, columnValues);
-            
+
+            serviceResponce.Message = "The Place have been createed successfully";
+
             return serviceResponce;
         }
 

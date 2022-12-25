@@ -1,7 +1,7 @@
 ﻿
 
 using Geonote.Models;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace Geonote.Data
 {
