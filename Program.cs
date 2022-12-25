@@ -1,6 +1,7 @@
 global using Microsoft.EntityFrameworkCore.Sqlite;
 global using Microsoft.Data.Sqlite;
 global using Geonote.Data;
+global using Microsoft.EntityFrameworkCore;
 using Geonote.Models;
 using Geonote.Repositories;
 using System.Runtime.ExceptionServices;
