@@ -5,7 +5,7 @@ global using Microsoft.EntityFrameworkCore;
 using Geonote.Models;
 using Geonote.Repositories;
 using System.Runtime.ExceptionServices;
-using Microsoft.EntityFrameworkCore;
+using Geonote.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
 

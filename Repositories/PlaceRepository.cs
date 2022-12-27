@@ -37,7 +37,7 @@ namespace Geonote.Repositories
 
             SQLTableManagement.InsertData(PlaceTableName, columnNames, columnValues);
 
-            serviceResponce.Message = "The Place have been createed successfully";
+            serviceResponce.Message = "The Place have been created successfully";
 
             return serviceResponce;
         }
