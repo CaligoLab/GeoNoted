@@ -15,7 +15,7 @@ namespace Geonote.Controllers
         [HttpGet]
         public List<Location> GetAllLocations()
         {
-            return LocationRepository.GetAllLocation();
+            return LocationRepository.GetAllLocations();
         }
 
         [HttpGet("{id}")]
@@ -23,11 +23,11 @@ namespace Geonote.Controllers
         {
             return LocationRepository.GetLocation(id);
         }
-        /*[HttpGet("places")]
-        public List<Location>? GetLocationsWithPlaces()
+        [HttpGet("places/{locationId}")]
+        public Location? GetDetaledLocationData(string locationId)
         {
-
-        }*/
+            return LocationRepository.GetLocationWithAllPlaces(locationId);
+        }
 
         [HttpPost]
         public void AddLocation([FromBody] Location location)

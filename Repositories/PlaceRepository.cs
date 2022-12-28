@@ -33,8 +33,7 @@ namespace Geonote.Repositories
 
 
             SQLTableManagement.InsertData(placeTableName, columnNames, columnValues);
-        }
-        /* 
+        }/* 
                 public static List<Place>? GetPlaceById(string placeId)
                 {
                    var newConnection = SQLiteConnect.CreateConnection();

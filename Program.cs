@@ -34,11 +34,11 @@ app.MapControllerRoute(
 //Geonote.Repositories.Migrations.run(sqliteConnection);
 /*var errand = new Geonote.Models.Errand()
 {
-    Name = "first",
+    Name = "second",
     Comment = "smth"
 };
-Geonote.Repositories.ErrandRepository.AddNewErrand(errand);*/
-
+Geonote.Repositories.ErrandRepository.AddNewErrand(errand);
+*/
 /*
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
@@ -52,6 +52,13 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 //var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategories[2].Id);
 
 //Geonote.Repositories.LocationRepository.AddNewLocation("0.700", "5.00", null);
-
-//Geonote.Repositories.PlaceRepository.AddNewPlace("ATB", null, "Beauty", null, "f0356fe4-cdbe-485c-8dd1-5ff258db3d0c");
+/*var newPlace = new Geonote.Models.Place()
+{
+    Name = "School",
+    Category = "Study",
+    LocationId = "5eaef813-bb70-49f8-b5e4-9ff6bae01c64"
+}; 
+Geonote.Repositories.PlaceRepository.AddNewPlace(newPlace);
+*/
+//var locationWithAllPlaces = Geonote.Repositories.LocationRepository.GetLocationWithAllPlaces("5eaef813-bb70-49f8-b5e4-9ff6bae01c64");
 app.Run();

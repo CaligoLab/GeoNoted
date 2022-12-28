@@ -1,6 +1,7 @@
 ﻿using Geonote.Models;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace Geonote.Repositories
 {
@@ -23,6 +24,12 @@ namespace Geonote.Repositories
             
             if (errand.Location != null)
             { columnNames += ", LocationId"; columnValues += $", \"{errand.Location.Id}\""; }
+
+            if (errand.Address != null)
+            { columnNames += ", AddressId"; columnValues += $", \"{errand.Address.Id}\""; }
+
+            if (errand.Place != null)
+            { columnNames += ", PlaceId"; columnValues += $", \"{errand.Place.Id}\""; }
 
             SQLTableManagement.InsertData(ErrandTableName, columnNames, columnValues);
         }
@@ -163,18 +170,21 @@ namespace Geonote.Repositories
                     }
                 }
 
-                /*if (sqlite_datareader[10] != DBNull.Value)
+                if (sqlite_datareader[10] != DBNull.Value)
                 {
                     var placeId = sqlite_datareader.GetString(10);
                     var placeName = sqlite_datareader.GetString(11);
                     if(place == null)
-                    place = new Place
                     {
-                        Id = placeId,
-                        Name = placeName
-                    };
-                    location.Place = place;
-                }*/
+                        place = new Place
+                        {
+                            Id = placeId,
+                            Name = placeName
+                        };
+
+                    }
+                    //location.Place = place;
+                }
             }
             return errand;
         }

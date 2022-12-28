@@ -8,10 +8,11 @@ namespace Geonote.Models
 
         public string Longitude { get; set; }
 
-        public Place Place { get; set; }
+        public List <Place> Place { get; set; }
 
         public Location()
         {
+            Place = new List<Place>();
         }
     }
 }
