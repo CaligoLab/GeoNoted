@@ -59,7 +59,7 @@ namespace Geonote.Repositories
 
             SQLTableManagement.InsertData(UserTableName, columnNames, columnValues);
 
-            responce.Message = $"{newUser.Username}, welcome to GeoNoted! Let's start! Would you like to set up your Account just as you like it?";
+            responce.Message = $"{newUserDTO.Username}, welcome to GeoNoted! Let's start! Would you like to set up your Account just as you like it?";
             return responce;
         }
 

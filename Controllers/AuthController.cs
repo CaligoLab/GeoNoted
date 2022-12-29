@@ -15,6 +15,12 @@ namespace Geonote.Controllers
             return View();
         }
 
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
+
         [HttpPost("Register")]
         public ServiceResponce<string> Register([FromBody] UserRegisterDTO newUserDTO)
         {

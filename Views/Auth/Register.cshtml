@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+<h1>@ViewData["Welcome to GeoNoted"]</h1>
+
+<form class="container-fluid mt-4">
+    <div class="mb-3 mt-4">
+        <label for="UserRegisterDTO.Username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="registerInputUsername">
+    </div>
+    <button type="button" class="btn btn-primary">Check availability</button>
+    <div class="mb-3">
+        <label for="UserRegisterDTO.Password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="registerInputPassword1">
+    </div>
+    <button id="btnCancel" type="button" class="btn btn-secondary btn-close">Close</button>
+    <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
+
+</form>

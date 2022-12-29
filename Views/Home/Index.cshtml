@@ -2,25 +2,32 @@
     ViewData["Title"] = "Get It Done";
 }
 
-<div class="text-center">
-    <h1 class="display-4">GET IT DONE</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-4">
+    <h1 class="display-3">GeoNoted</h1>
+    <p class="display-6">Give your brain a break. And get it all done</p>
 </div>
 
-<form class="container-fluid">
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+<div class="text-center mt-4">
+<img src="magic mushrooms round.png" alt="magic mushrooms" class="img-fluid">
+</div>
+
+<form class="container-fluid mt-4">
+    <div class="mb-3 mt-4">
+        <label for="UserRegisterDTO.Email" class="form-label">Email address</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
+    
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">I agree to the <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></label>
+        <label class="form-check-label" for="exampleCheck1"> <a class="nav-link active" asp-controller="Home" asp-action="Privacy">I agree to the Privacy Policy</a></label>
         
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+   
+    <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" asp-controller="Auth" asp-action="Registration">Sign up</button>
+        <button class="btn btn-primary" type="button">Log in</button>
+    </div>
 </form>
+
+
