@@ -203,7 +203,39 @@ namespace Geonote.Repositories
             { setName += $"Comment = \"{errand.Comment}\""; }
                 
             SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
-        }// do need i to add Location, Place, Address
+        }// do need i to add Category, Location, Place, Address here?
+
+        public static void UpdateErrandCategoryByErrandId(string errandId, Categorу category)
+        {
+            var setName = $"CategoryId = \"{category.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandLocationByErrandId(string errandId, Location location)
+        {
+            var setName = $"LocationId = \"{location.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandAddressByErrandId(string errandId, Address address)
+        {
+            var setName = $"AddressId = \"{address.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandPlaceByErrandId(string errandId, Place place)
+        {
+            var setName = $"PlaceId = \"{place.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
 
         public static void DeleteErrandById(string id)
         {

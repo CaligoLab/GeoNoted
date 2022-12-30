@@ -8,6 +8,12 @@ namespace Geonote.Models
 
         public Categorу()
         {
+
+        }
+
+        public Categorу(string name)
+        {
+            this.Name = name;
         }
     }
 }

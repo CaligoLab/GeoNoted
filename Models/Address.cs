@@ -15,5 +15,14 @@
         public string? PlaceId { get; set; }
         public string? LocationId { get; set; } //autofill from the maps? // Either that or the User chooses the point on the maps (like in Uber app) - not filled in manually in any of the cases
 
+        public Address()
+        {
+
+        }
+
+        public Address(string street)
+        {
+            this.Street = street;
+        }
     }
 }

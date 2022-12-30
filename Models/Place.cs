@@ -20,6 +20,10 @@
             LocationId = placeLocationId;
 
         }*/
+        public Place()
+        {
+        
+        }
 
         public Place(string placeName)
         {

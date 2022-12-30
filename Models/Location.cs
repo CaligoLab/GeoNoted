@@ -12,6 +12,12 @@ namespace Geonote.Models
 
         public Location()
         {
+
+        }
+        public Location(string latitude, string longitude)
+        {
+            this.Latitude = latitude;
+            this.Longitude = longitude;
         }
     }
 }

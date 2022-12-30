@@ -1,7 +1,6 @@
 ﻿using Geonote.Models;
 using Microsoft.CodeAnalysis.VisualBasic;
 using System;
-using System.Data.SQLite;
 using System.Net.NetworkInformation;
 
 namespace Geonote.Repositories
