@@ -7,25 +7,19 @@ namespace Geonote.Repositories
     {
         private static readonly string HintTableName = "Hint";
 
-        public static void AddNewHint(string hintName, string? hintId, Categorу? category, Location? location)
+        public static void AddNewHint(Hint hint, string? categoryID)
         {
-            var id = Guid.NewGuid();
+            if (hint.Id == null) { hint.Id = Guid.NewGuid().ToString(); }
 
             var columnNames = "Id, Name";
-            var columnValues = $"\"{id}\", \"{hintName}\"";
+            var columnValues = $"\"{hint.Id}\", \"{hint.Name}\"";
 
-            if (category != null)
-            {
-                if (category.Id != null)
-                { columnNames += ", CategoryId"; columnValues += $", \"{category.Id}\""; }
-            }
+        
+            if (categoryID != null)
+            { columnNames += ", CategoryId"; columnValues += $", \"{categoryID}\""; }
 
-
-            if (location != null)
-            {
-                if (location.Id != null)
-                { columnNames += ", LocationId"; columnValues += $", \"{location.Id}\""; }
-            }
+            if (hint.Location != null)
+            { columnNames += ", LocationId"; columnValues += $", \"{hint.Location.Id}\""; }          
 
             SQLTableManagement.InsertData(HintTableName, columnNames, columnValues);
         }
@@ -37,11 +31,19 @@ namespace Geonote.Repositories
             while (sqlite_datareader.Read())
             {
                 string name = sqlite_datareader.GetString(1);
+
+                string categoryId = string.Empty;
+
+                if (sqlite_datareader.GetValue(2) != DBNull.Value)
+                    categoryId = sqlite_datareader.GetString(2);
+
                 SQLiteConnect.CloseConnections(sqlite_datareader);
                 return new Hint
                 {
                     Id = hintId,
-                    Name = name
+                    Name = name,
+                    Category = new Categorу(categoryId)
+
                 };
             }
             SQLiteConnect.CloseConnections(sqlite_datareader);
@@ -56,10 +58,15 @@ namespace Geonote.Repositories
             {
                 string id = sqlite_datareader.GetString(0);
                 string name = sqlite_datareader.GetString(1);
+                string categoryId = string.Empty;
+
+                if (sqlite_datareader.GetValue(2) != DBNull.Value)
+                    categoryId = sqlite_datareader.GetString(2);
                 allHints.Add(new Hint
                 {
                     Id = id,
-                    Name = name
+                    Name = name,
+                    Category = new Categorу(categoryId)
                 });
             }
             SQLiteConnect.CloseConnections(sqlite_datareader);

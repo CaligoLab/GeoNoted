@@ -32,10 +32,10 @@ namespace Geonote.Controllers
         }
 
         [HttpPost]
-        public void CreateNewHint([FromBody] Hint hint)
+        public void CreateNewHint([FromBody] Hint hint, [FromQuery] string? categoryID)
         {
-            HintRepository.AddNewHint(hint.Name, hint.Id, hint.Category, hint.Location);
-        }
+            HintRepository.AddNewHint(hint, categoryID);          
+        } 
 
         [HttpDelete("{hintId}")]
         public void DeleteHint(string hintId)
