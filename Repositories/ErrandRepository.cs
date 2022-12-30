@@ -1,6 +1,7 @@
 ﻿using Geonote.Models;
 using Microsoft.AspNetCore.Http.Features;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace Geonote.Repositories
 {
@@ -23,6 +24,12 @@ namespace Geonote.Repositories
             
             if (errand.Location != null)
             { columnNames += ", LocationId"; columnValues += $", \"{errand.Location.Id}\""; }
+
+            if (errand.Address != null)
+            { columnNames += ", AddressId"; columnValues += $", \"{errand.Address.Id}\""; }
+
+            if (errand.Place != null)
+            { columnNames += ", PlaceId"; columnValues += $", \"{errand.Place.Id}\""; }
 
             SQLTableManagement.InsertData(ErrandTableName, columnNames, columnValues);
         }
@@ -81,9 +88,10 @@ namespace Geonote.Repositories
                 "LEFT JOIN Category ON Errand.CategoryId = Category.Id\n" +
                 "LEFT JOIN Item ON Errand.Id = Item.ErrandId\n" +
                 "LEFT JOIN Location ON Errand.LocationId = Location.Id\n" +
+                //"LEFT JOIN Address ON Errand.AddressId = Address.Id\n" + //I need full address obj?
                 "LEFT JOIN Place ON Errand.PlaceId = Place.Id\n" +
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
-            SQLiteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
+            SqliteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
             Errand errand = null;
             Categorу category = null;
             Location location = null;
@@ -168,7 +176,7 @@ namespace Geonote.Repositories
                     var placeId = sqlite_datareader.GetString(10);
                     var placeName = sqlite_datareader.GetString(11);
                     if(place == null)
-                    place = new Place
+                    place = new Place ("")
                     {
                         Id = placeId,
                         Name = placeName
@@ -194,6 +202,38 @@ namespace Geonote.Repositories
             if (!(errand.Comment == null))
             { setName += $"Comment = \"{errand.Comment}\""; }
                 
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }// do need i to add Category, Location, Place, Address here?
+
+        public static void UpdateErrandCategoryByErrandId(string errandId, Categorу category)
+        {
+            var setName = $"CategoryId = \"{category.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandLocationByErrandId(string errandId, Location location)
+        {
+            var setName = $"LocationId = \"{location.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandAddressByErrandId(string errandId, Address address)
+        {
+            var setName = $"AddressId = \"{address.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandPlaceByErrandId(string errandId, Place place)
+        {
+            var setName = $"PlaceId = \"{place.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
             SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
         }
 
