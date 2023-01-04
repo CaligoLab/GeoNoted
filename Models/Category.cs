@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+
 namespace Geonote.Models
 {
     public class Categorу
@@ -9,6 +11,7 @@ namespace Geonote.Models
         public Categorу()
         {
         }
+
     }
 }
 

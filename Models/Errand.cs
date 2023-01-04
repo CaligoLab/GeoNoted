@@ -18,11 +18,12 @@ namespace Geonote.Models
 
         public Address? Address { get; set; }
 
-        public Place? Place { get; set; }
+        public List<Place>? PlacesList { get; set; }
 
         public Errand()
         {
             ItemsList = new List<Item>();
+            PlacesList = new List<Place>();
         }
     }
 }

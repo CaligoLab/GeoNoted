@@ -15,5 +15,15 @@
         public string? PlaceId { get; set; }
         public string? LocationId { get; set; } //autofill from the maps?
 
+
+        public Address()
+        {
+        }
+        public Address(string street)
+        {
+            this.Street = street;
+        }
     }
+
+
 }

@@ -1,4 +1,4 @@
-using Geonote.Models;
+﻿using Geonote.Models;
 using Geonote.Repositories;
 using Microsoft.Data.Sqlite;
 using System.Runtime.ExceptionServices;
@@ -37,8 +37,23 @@ app.MapControllerRoute(
     Name = "second",
     Comment = "smth"
 };
-Geonote.Repositories.ErrandRepository.AddNewErrand(errand);
-*/
+Geonote.Repositories.ErrandRepository.AddNewErrand(errand);*/
+
+
+var errandTest = new Errand
+{
+    Name = "treat the dog",
+    Comment = "at 12-00",
+    /*ItemsList = new List<Item>() { new Item { Name = "test1"},
+                                   new Item { Name = "test2"},
+                                   new Item { Name = "test3"}},*/
+    Category = null,
+    Location = new Location("f0356fe4-cdbe-485c-8dd1-5ff258db3d0c"),
+    //Address = new Address("Test Street")
+    /*PlacesList = new List<Place>() { new Place { Id = "055c6084-4747-4137-9b11-fc6aa4208df2", Name = "School"},
+                                     new Place{ Name = "Job"}}*/
+};
+Geonote.Repositories.ErrandRepository.AddNewErrand(errandTest);
 /*
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
@@ -54,9 +69,9 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 //Geonote.Repositories.LocationRepository.AddNewLocation("0.700", "5.00", null);
 /*var newPlace = new Geonote.Models.Place()
 {
-    Name = "School",
-    Category = "Study",
-    LocationId = "5eaef813-bb70-49f8-b5e4-9ff6bae01c64"
+    Name = "Clinic",
+    Category = "Vet",
+    LocationId = "f0356fe4-cdbe-485c-8dd1-5ff258db3d0c"
 }; 
 Geonote.Repositories.PlaceRepository.AddNewPlace(newPlace);
 */
