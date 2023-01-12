@@ -23,6 +23,7 @@ namespace Geonote.Controllers
         {
             return LocationRepository.GetLocation(id);
         }
+
         [HttpGet("places/{locationId}")]
         public Location? GetDetaledLocationData(string locationId)
         {
@@ -32,27 +33,20 @@ namespace Geonote.Controllers
         [HttpPost]
         public void AddLocation([FromBody] Location location)
         {
-            LocationRepository.AddNewLocation(location.Latitude, location.Longitude, null);
+            LocationRepository.AddNewLocation(location.Latitude, location.Longitude);
         }
+
         [HttpDelete("{id}")]
         public void DeleteLocation(string id)
         {
             LocationRepository.DeleteLocationById(id);
         }
+
         [HttpPut("{id}")]
         public Location? UpdateLocation(string id, [FromBody] Location location)
         {
-            if(location.Latitude == null)
-            {
-                LocationRepository.UpdateLocationById(id, null, location.Longitude);
-            }
-            if(location.Longitude == null)
-            {
-                LocationRepository.UpdateLocationById(id, location.Latitude, null);
-            }
+            LocationRepository.UpdateLocationById(id, location);
             return LocationRepository.GetLocation(id);
         }
-
-
     }
 }

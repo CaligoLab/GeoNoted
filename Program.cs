@@ -39,22 +39,21 @@ app.MapControllerRoute(
 };
 Geonote.Repositories.ErrandRepository.AddNewErrand(errand);*/
 
-
-var errandTest = new Errand
+/*var errandTest = new Errand
 {
     Name = "treat the dog",
     Comment = "at 12-00",
-    /*ItemsList = new List<Item>() { new Item { Name = "test1"},
+    ItemsList = new List<Item>() { new Item { Name = "test1"},
                                    new Item { Name = "test2"},
-                                   new Item { Name = "test3"}},*/
+                                   new Item { Name = "test3"}},
     Category = null,
     Location = new Location("f0356fe4-cdbe-485c-8dd1-5ff258db3d0c"),
-    //Address = new Address("Test Street")
-    /*PlacesList = new List<Place>() { new Place { Id = "055c6084-4747-4137-9b11-fc6aa4208df2", Name = "School"},
-                                     new Place{ Name = "Job"}}*/
+    Address = new Address("Test Street"),
+    PlacesList = new List<Place>() { new Place { Id = "055c6084-4747-4137-9b11-fc6aa4208df2", Name = "School" } }
 };
-Geonote.Repositories.ErrandRepository.AddNewErrand(errandTest);
+Geonote.Repositories.ErrandRepository.AddNewErrand(errandTest);*/
 /*
+ * 
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
 
 var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithAllFields("b6621fa5-7b6b-47c7-bd60-339b245a792a");
@@ -76,4 +75,11 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 Geonote.Repositories.PlaceRepository.AddNewPlace(newPlace);
 */
 //var locationWithAllPlaces = Geonote.Repositories.LocationRepository.GetLocationWithAllPlaces("5eaef813-bb70-49f8-b5e4-9ff6bae01c64");
+/*var location = new Location
+{
+    Latitude = "0.0003",
+    Longitude = "3.000"
+};
+Geonote.Repositories.LocationRepository.UpdateLocationById("5c2caaaa-5503-4ddf-a95d-068b8f5aead5", location);
+*/
 app.Run();

@@ -88,9 +88,9 @@ namespace Geonote.Repositories
                 "LEFT JOIN Place ON Errand.LocationId = Place.LocationId\n" +
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
             SqliteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
-            Errand errand = null;
-            Categorу category = null;
-            Location location = null;
+            Errand? errand = null;
+            Categorу? category = null;
+            Location? location = null;
             var places = new List<Place>();
             var items = new List<Item>();
 
@@ -110,7 +110,7 @@ namespace Geonote.Repositories
                     };
                 }
 
-                Item item = null;
+                Item? item = null;
 
                 if (sqlite_datareader[3] != DBNull.Value)
                 {
@@ -166,7 +166,7 @@ namespace Geonote.Repositories
                         errand.Location = location;
                     }
                 }
-                Place place = null;
+                Place? place = null;
                 if (sqlite_datareader[10] != DBNull.Value)
                 {
                     var placeId = sqlite_datareader.GetString(10);

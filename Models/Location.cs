@@ -8,17 +8,7 @@ namespace Geonote.Models
 
         public string Longitude { get; set; }
 
-        public List <Place> Place { get; set; }
-
-        public Location(string id)
-        {
-            this.Id = id;
-        }
-        public Location(string latitude, string longitude)
-        {
-            this.Latitude = latitude;
-            this.Longitude = longitude;
-        }
+        public List <Place>? Place { get; set; }
         public Location()
         {
             Place = new List<Place>();
