@@ -19,8 +19,8 @@ namespace Geonote.Repositories
             if (errand.Comment != null) 
             { columnNames += ", Comment"; columnValues += $", \"{errand.Comment}\""; }
 
-            if (errand.Category != null)
-            { columnNames += ", CategoryId"; columnValues += $", \"{errand.Category.Id}\""; }
+            if (errand.Topic != null) 
+            { columnNames += ", CategoryId"; columnValues += $", \"{errand.Topic.Id}\""; }
             
             if (errand.Location != null)
             { columnNames += ", LocationId"; columnValues += $", \"{errand.Location.Id}\""; }
@@ -78,18 +78,18 @@ namespace Geonote.Repositories
         {
             string statement = "SELECT Errand.Id AS ErrandId, Errand.Name, Errand.Comment, " +
                 "Item.Id AS ItemId, Item.Name, " +
-                "Category.Id AS CatgoryId, Category.Name, " +
+                "Topic.Id AS TopicId, Topic.Name, " +
                 "Location.Id AS LocationId, Location.Latitude, Location.Longitude, " +
                 "Place.Id AS PlaceId, Place.Name\n" +
                 "FROM Errand\n" +
-                "LEFT JOIN Category ON Errand.CategoryId = Category.Id\n" +
+                "LEFT JOIN Topic ON Errand.TopicId = Topic.Id\n" +
                 "LEFT JOIN Item ON Errand.Id = Item.ErrandId\n" +
                 "LEFT JOIN Location ON Errand.LocationId = Location.Id\n" +
                 "LEFT JOIN Place ON Errand.LocationId = Place.LocationId\n" +
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
             SqliteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
             Errand? errand = null;
-            Categorу? category = null;
+            Topic? topic = null;
             Location? location = null;
             var places = new List<Place>();
             var items = new List<Item>();
@@ -139,15 +139,15 @@ namespace Geonote.Repositories
 
                 if (sqlite_datareader[5] != DBNull.Value)
                 {
-                    var categoryId = sqlite_datareader.GetString(5);
-                    var categoryName = sqlite_datareader.GetString(6);
-                    if(category == null)
-                    category = new Categorу
+                    var topicId = sqlite_datareader.GetString(5);
+                    var topicName = sqlite_datareader.GetString(6);
+                    if(topic == null)
+                    topic = new Topic
                     {
-                        Id = categoryId,
-                        Name = categoryName
+                        Id = topicId,
+                        Name = topicName
                     };
-                    errand.Category = category;
+                    errand.Topic = topic;
                 }
 
                 if (sqlite_datareader[7] != DBNull.Value)
@@ -211,9 +211,9 @@ namespace Geonote.Repositories
             SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
         }
 
-        public static void UpdateErrandCategoryByErrandId(string errandId, Categorу category)
+        public static void UpdateErrandTopicByErrandId(string errandId, Topic topic)
         {
-            var setName = $"CategoryId = \"{category.Id}\"";
+            var setName = $"TopicId = \"{topic.Id}\"";
             var clause = $"Id = \"{errandId}\"";
 
             SQLTableManagement.UpdateData(ErrandTableName, setName, clause);

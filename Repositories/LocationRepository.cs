@@ -102,7 +102,7 @@ namespace Geonote.Repositories
                             Id = placeId,        
                             Name = placeName,
                             AddressId = addressId,
-                            Category = placeCategory,
+                            PlaceCategory = placeCategory,
                             Comment = placeComment
                         };
                         places.AddLast(place);

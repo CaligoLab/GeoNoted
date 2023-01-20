@@ -6,7 +6,7 @@
 
         public string Name { get; set; }
         public string? AddressId { get; set; }
-        public string? Category { get; set; } 
+        public string? PlaceCategory { get; set; } 
         public string? Comment { get; set; }
         public string? LocationId { get; set; }
 

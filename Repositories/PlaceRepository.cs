@@ -25,8 +25,8 @@ namespace Geonote.Repositories
             if (place.AddressId != null)
             { columnNames += ", AddressId"; columnValues += $", \"{place.AddressId}\""; }
 
-            if (place.Category != null)
-            { columnNames += ", Category"; columnValues += $", \"{place.Category}\""; }
+            if (place.PlaceCategory != null)
+            { columnNames += ", Category"; columnValues += $", \"{place.PlaceCategory}\""; }
 
             if (place.LocationId != null)
             { columnNames += ", LocationId"; columnValues += $", \"{place.LocationId}\""; }
@@ -74,7 +74,7 @@ namespace Geonote.Repositories
 
             setValues += $"Name = \"{place.Name}\"";
             setValues += $", AddressId = \"{place.AddressId}\"";
-            setValues += $", Category = \"{place.Category}\"";
+            setValues += $", Category = \"{place.PlaceCategory}\"";
             setValues += $", Comment = \"{place.Comment}\"";
             setValues += $", LocationId = \"{place.LocationId}\"";
 

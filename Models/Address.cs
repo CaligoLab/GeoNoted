@@ -12,17 +12,15 @@
         public string Street { get; set; }
         public string? BuildingNumber { get; set; }
         public string? OfficeNumber { get; set; }
-        public string? PlaceId { get; set; }
+        public List<Place>? PlacesList { get; set; }
         public string? LocationId { get; set; } //autofill from the maps?
 
 
         public Address()
         {
+            PlacesList = new List<Place>();
         }
-        public Address(string street)
-        {
-            this.Street = street;
-        }
+
     }
 
 

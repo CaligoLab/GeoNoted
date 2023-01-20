@@ -7,17 +7,17 @@ namespace Geonote.Repositories
     {
         private static readonly string HintTableName = "Hint";
 
-        public static void AddNewHint(string hintName, string? hintId, Categorу? category, Location? location)
+        public static void AddNewHint(string hintName, string? hintId, Topic? topic, Location? location)
         {
             var id = Guid.NewGuid();
 
             var columnNames = "Id, Name";
             var columnValues = $"\"{id}\", \"{hintName}\"";
 
-            if (category != null)
+            if (topic != null)
             {
-                if (category.Id != null)
-                { columnNames += ", CategoryId"; columnValues += $", \"{category.Id}\""; }
+                if (topic.Id != null)
+                { columnNames += ", TopicId"; columnValues += $", \"{topic.Id}\""; }
             }
 
 
