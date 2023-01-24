@@ -82,4 +82,5 @@ Geonote.Repositories.PlaceRepository.AddNewPlace(newPlace);
 };
 Geonote.Repositories.LocationRepository.UpdateLocationById("5c2caaaa-5503-4ddf-a95d-068b8f5aead5", location);
 */
+//Geonote.Repositories.TopicRepository.UpdateTopicById("b9bfb56f-968c-4a02-ae3f-00ddafecec39", "Work");
 app.Run();
