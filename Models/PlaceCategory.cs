@@ -1,12 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
+
 namespace Geonote.Models
 {
-    public class Categorу
+    public class PlaceCategorу
     {
         public string Id { get; set; }
         public string Name { get; set; }
 
-        public Categorу()
+        public PlaceCategorу()
         {
 
         }
@@ -15,6 +17,7 @@ namespace Geonote.Models
         {
             this.Id = Id;
         }
+
     }
 }
 

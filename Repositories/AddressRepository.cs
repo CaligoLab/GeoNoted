@@ -35,9 +35,6 @@ namespace Geonote.Repositories
             if (poBox != null)
             { columnNames += ", POBox"; columnValues += $", \"{poBox}\""; }
 
-            if (placeId != null)
-            { columnNames += ", PlaceId"; columnValues += $", \"{placeId}\""; }
-
             if (locationId != null)
             { columnNames += ", LocationId"; columnValues += $", \"{locationId}\""; }
 

@@ -19,11 +19,14 @@ namespace Geonote.Repositories
             if (errand.Comment != null) 
             { columnNames += ", Comment"; columnValues += $", \"{errand.Comment}\""; }
 
-            if (errand.Category != null)
-            { columnNames += ", CategoryId"; columnValues += $", \"{errand.Category.Id}\""; }
+            if (errand.Topic != null) 
+            { columnNames += ", CategoryId"; columnValues += $", \"{errand.Topic.Id}\""; }
             
             if (errand.Location != null)
             { columnNames += ", LocationId"; columnValues += $", \"{errand.Location.Id}\""; }
+
+            if (errand.Address != null)
+            { columnNames += ", AddressId"; columnValues += $", \"{errand.Address.Id}\""; }
 
             SQLTableManagement.InsertData(ErrandTableName, columnNames, columnValues);
         }
@@ -75,20 +78,20 @@ namespace Geonote.Repositories
         {
             string statement = "SELECT Errand.Id AS ErrandId, Errand.Name, Errand.Comment, " +
                 "Item.Id AS ItemId, Item.Name, " +
-                "Category.Id AS CatgoryId, Category.Name, " +
+                "Topic.Id AS TopicId, Topic.Name, " +
                 "Location.Id AS LocationId, Location.Latitude, Location.Longitude, " +
                 "Place.Id AS PlaceId, Place.Name\n" +
                 "FROM Errand\n" +
-                "LEFT JOIN Category ON Errand.CategoryId = Category.Id\n" +
+                "LEFT JOIN Topic ON Errand.TopicId = Topic.Id\n" +
                 "LEFT JOIN Item ON Errand.Id = Item.ErrandId\n" +
                 "LEFT JOIN Location ON Errand.LocationId = Location.Id\n" +
-                "LEFT JOIN Place ON Errand.PlaceId = Place.Id\n" +
+                "LEFT JOIN Place ON Errand.LocationId = Place.LocationId\n" +
                 $"WHERE Errand.Id = \"{errandIdForSelect}\";";
             SqliteDataReader sqlite_datareader = SQLTableManagement.ReadCustomData(statement);
-            Errand errand = null;
-            Categorу category = null;
-            Location location = null;
-            Place place = null;
+            Errand? errand = null;
+            Topic? topic = null;
+            Location? location = null;
+            var places = new List<Place>();
             var items = new List<Item>();
 
             while (sqlite_datareader.Read())
@@ -107,7 +110,7 @@ namespace Geonote.Repositories
                     };
                 }
 
-                Item item = null;
+                Item? item = null;
 
                 if (sqlite_datareader[3] != DBNull.Value)
                 {
@@ -136,15 +139,15 @@ namespace Geonote.Repositories
 
                 if (sqlite_datareader[5] != DBNull.Value)
                 {
-                    var categoryId = sqlite_datareader.GetString(5);
-                    var categoryName = sqlite_datareader.GetString(6);
-                    if(category == null)
-                    category = new Categorу
+                    var topicId = sqlite_datareader.GetString(5);
+                    var topicName = sqlite_datareader.GetString(6);
+                    if(topic == null)
+                    topic = new Topic
                     {
-                        Id = categoryId,
-                        Name = categoryName
+                        Id = topicId,
+                        Name = topicName
                     };
-                    errand.Category = category;
+                    errand.Topic = topic;
                 }
 
                 if (sqlite_datareader[7] != DBNull.Value)
@@ -163,19 +166,29 @@ namespace Geonote.Repositories
                         errand.Location = location;
                     }
                 }
-
-                /*if (sqlite_datareader[10] != DBNull.Value)
+                Place? place = null;
+                if (sqlite_datareader[10] != DBNull.Value)
                 {
                     var placeId = sqlite_datareader.GetString(10);
-                    var placeName = sqlite_datareader.GetString(11);
-                    if(place == null)
-                    place = new Place ("")
+                    if (places.Where(i => i.Id == placeId).Count() > 0)
                     {
-                        Id = placeId,
-                        Name = placeName
-                    };
-                    location.Place = place;
-                }*/
+                        place = places.Where(i => i.Id == placeId).First();
+                    }
+                    else
+                    {
+                        var placeName = sqlite_datareader.GetString(11);
+                        place = new Place
+                        {
+                            Id = placeId,
+                            Name = placeName
+                        };
+                        items.Add(item);
+                    }
+                    if (!errand.PlacesList.Contains(place))
+                    {
+                        errand.PlacesList.Add(place);
+                    }
+                }
             }
             return errand;
         }
@@ -195,6 +208,38 @@ namespace Geonote.Repositories
             if (!(errand.Comment == null))
             { setName += $"Comment = \"{errand.Comment}\""; }
                 
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandTopicByErrandId(string errandId, Topic topic)
+        {
+            var setName = $"TopicId = \"{topic.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandLocationByErrandId(string errandId, Location location)
+        {
+            var setName = $"LocationId = \"{location.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandAddressByErrandId(string errandId, Address address)
+        {
+            var setName = $"AddressId = \"{address.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
+            SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
+        }
+
+        public static void UpdateErrandPlaceByErrandId(string errandId, Place place)
+        {
+            var setName = $"PlaceId = \"{place.Id}\"";
+            var clause = $"Id = \"{errandId}\"";
+
             SQLTableManagement.UpdateData(ErrandTableName, setName, clause);
         }
 
