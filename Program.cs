@@ -39,19 +39,6 @@ app.MapControllerRoute(
 };
 Geonote.Repositories.ErrandRepository.AddNewErrand(errand);*/
 
-/*var errandTest = new Errand
-{
-    Name = "treat the dog",
-    Comment = "at 12-00",
-    ItemsList = new List<Item>() { new Item { Name = "test1"},
-                                   new Item { Name = "test2"},
-                                   new Item { Name = "test3"}},
-    Category = null,
-    Location = new Location("f0356fe4-cdbe-485c-8dd1-5ff258db3d0c"),
-    Address = new Address("Test Street"),
-    PlacesList = new List<Place>() { new Place { Id = "055c6084-4747-4137-9b11-fc6aa4208df2", Name = "School" } }
-};
-Geonote.Repositories.ErrandRepository.AddNewErrand(errandTest);*/
 /*
  * 
 var allErrands = Geonote.Repositories.ErrandRepository.GetAllErrands();
@@ -62,25 +49,7 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 //Geonote.Repositories.CategoryRepository.AddNewCategory("AutoService");
 //Geonote.Repositories.CategoryRepository.AddNewCategory("Beauty");
 //var categoryById = Geonote.Repositories.CategoryRepository.GetCategory("2badb9c6-a0ad-40ac-8f17-8eeda659633f");
-//var getAllCategories = Geonote.Repositories.CategoryRepository.GetAllCategories();
-//var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategories[2].Id);
-
-//Geonote.Repositories.LocationRepository.AddNewLocation("0.700", "5.00", null);
-/*var newPlace = new Geonote.Models.Place()
-{
-    Name = "Clinic",
-    Category = "Vet",
-    LocationId = "f0356fe4-cdbe-485c-8dd1-5ff258db3d0c"
-}; 
-Geonote.Repositories.PlaceRepository.AddNewPlace(newPlace);
-*/
-//var locationWithAllPlaces = Geonote.Repositories.LocationRepository.GetLocationWithAllPlaces("5eaef813-bb70-49f8-b5e4-9ff6bae01c64");
-/*var location = new Location
-{
-    Latitude = "0.0003",
-    Longitude = "3.000"
-};
-Geonote.Repositories.LocationRepository.UpdateLocationById("5c2caaaa-5503-4ddf-a95d-068b8f5aead5", location);
-*/
-//Geonote.Repositories.TopicRepository.UpdateTopicById("b9bfb56f-968c-4a02-ae3f-00ddafecec39", "Work");
+//var getAllCategoties = Geonote.Repositories.CategoryRepository.GetAllCategories();
+//var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategoties[0].Id);
+Geonote.Repositories.CategoryRepository.
 app.Run();
