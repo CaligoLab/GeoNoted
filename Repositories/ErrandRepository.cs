@@ -164,7 +164,7 @@ namespace Geonote.Repositories
                     }
                 }
 
-                if (sqlite_datareader[10] != DBNull.Value)
+                /*if (sqlite_datareader[10] != DBNull.Value)
                 {
                     var placeId = sqlite_datareader.GetString(10);
                     var placeName = sqlite_datareader.GetString(11);
@@ -175,7 +175,7 @@ namespace Geonote.Repositories
                         Name = placeName
                     };
                     location.Place = place;
-                }
+                }*/
             }
             return errand;
         }
