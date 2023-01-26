@@ -1,2 +1,2 @@
 # GeoNoted
-Errand-runner organizer with location- and time-dependent reminders
+Errand-running organizer with location- and time-dependent reminders
