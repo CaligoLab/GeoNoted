@@ -12,7 +12,7 @@ namespace Geonote.Controllers
             return View();
         }
         [HttpGet]
-        public List<Topic> GetAllTopics()
+        public List<Topic> GetAllListOfTopics()
         {
             return TopicRepository.GetAllTopics();
         }
@@ -32,7 +32,7 @@ namespace Geonote.Controllers
             TopicRepository.DeleteTopicById(id);
         }
         [HttpPut("{id}")]
-        public Topic? UpdateTopicById(string id, [FromBody] string name)
+        public Topic? UpdateTopicUsingId(string id, [FromBody] string name)
         {
             TopicRepository.UpdateTopicById(name, id);
             return TopicRepository.GetTopic(id);

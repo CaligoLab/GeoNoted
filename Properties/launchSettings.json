@@ -8,7 +8,7 @@
       },
       "applicationUrl": "https://localhost:7174;http://localhost:5174",
       "nativeDebugging": false,
-      "sqlDebugging": false
+      "sqlDebugging": true
     },
     "IIS Express": {
       "commandName": "IISExpress",
