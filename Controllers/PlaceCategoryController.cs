@@ -32,9 +32,9 @@ namespace Geonote.Controllers
             PlaceCategoryRepository.DeletePlaceCategoryById(id);
         }
         [HttpPut("{id}")]
-        public PlaceCategorу? UpdateCategoryById(string id, [FromBody] string name)
+        public PlaceCategorу? UpdateCategoryById(string id, [FromBody] PlaceCategorу placeCategory)
         {
-            PlaceCategoryRepository.UpdatePlaceCategoryNameById(name, id);
+            PlaceCategoryRepository.UpdatePlaceCategoryNameById(id, placeCategory);
             return PlaceCategoryRepository.GetPlaceCategory(id);
         }
 

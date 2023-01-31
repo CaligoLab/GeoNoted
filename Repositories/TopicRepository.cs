@@ -13,10 +13,10 @@ namespace Geonote.Repositories
             SQLTableManagement.InsertData(TopicTableName, "Id, Name", $"\"{id}\",\"{name}\"");
         }
         
-        public static void UpdateTopicById(string id, string name)
+        public static void UpdateTopicById(string id, Topic topic)
         {
             string clause = $"Id = \"{id}\"";
-            string setName = $"Name = \"{name}\"";
+            string setName = $"Name = \"{topic.Name}\"";
             SQLTableManagement.UpdateData(TopicTableName, setName, clause);
         }
 
@@ -33,7 +33,6 @@ namespace Geonote.Repositories
 
         public static Topic? GetTopic(string id)
         {
-            SQLiteConnect.GetSQLiteConnection();
             string clause = $"Id = \"{id}\"";
             var sqlite_datareader = SQLTableManagement.ReadData(TopicTableName, clause);
             while (sqlite_datareader.Read())
@@ -51,14 +50,12 @@ namespace Geonote.Repositories
         }
         public static List<Topic> GetAllTopics()
         {
-            SQLiteConnect.GetSQLiteConnection();
             var allTopics = new List<Topic>();
             var sqlite_datareader = SQLTableManagement.ReadData(TopicTableName, null);
             while (sqlite_datareader.Read())
             {
                 string id = sqlite_datareader.GetString(0);
                 string name = sqlite_datareader.GetString(1);
-                SQLiteConnect.CloseConnections(sqlite_datareader);
                 allTopics.Add(new Topic
                 {
                     Id = id,

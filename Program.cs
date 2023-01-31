@@ -51,5 +51,7 @@ var errand_with_all_filds = Geonote.Repositories.ErrandRepository.GetErrandWithA
 //var categoryById = Geonote.Repositories.CategoryRepository.GetCategory("2badb9c6-a0ad-40ac-8f17-8eeda659633f");
 //var getAllCategoties = Geonote.Repositories.CategoryRepository.GetAllCategories();
 //var getCategory = Geonote.Repositories.CategoryRepository.GetCategory(getAllCategoties[0].Id);
-Geonote.Repositories.CategoryRepository.
+//var topic = Geonote.Repositories.TopicRepository.GetTopic("0a9afd36-7053-47c9-8a3c-e6a7e3997129");
+//Geonote.Repositories.TopicRepository.AddNewTopic("Beauty");
+//var allplaceCategories = Geonote.Repositories.PlaceCategoryRepository.GetAllPlaceCategories();
 app.Run();

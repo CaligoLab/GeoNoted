@@ -32,9 +32,9 @@ namespace Geonote.Controllers
             TopicRepository.DeleteTopicById(id);
         }
         [HttpPut("{id}")]
-        public Topic? UpdateTopicById(string id, [FromBody] string name)
+        public Topic? UpdateTopicById(string id, [FromBody] Topic topic)
         {
-            TopicRepository.UpdateTopicById(name, id);
+            TopicRepository.UpdateTopicById(id, topic);
             return TopicRepository.GetTopic(id);
         }
     }
