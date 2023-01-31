@@ -18,7 +18,6 @@ namespace Geonote.Repositories
 
         public static List<PlaceCategorу> GetAllPlaceCategories()
         {
-            SQLiteConnect.GetSQLiteConnection();
             var allPlaceCategories = new List<PlaceCategorу>();
             var sqlite_datareader = SQLTableManagement.ReadData(PlaceCategoryTableName, null);
             while (sqlite_datareader.Read())
@@ -56,10 +55,10 @@ namespace Geonote.Repositories
         }
 
 
-        public static void UpdatePlaceCategoryNameById(string name, string id)
+        public static void UpdatePlaceCategoryNameById(string id, PlaceCategorу placeCategory)
         {
             var clause = $"Id = \"{id}\"";
-            var setName = $"Name = \"{name}\"";
+            var setName = $"Name = \"{placeCategory.Name}\"";
             SQLTableManagement.UpdateData(PlaceCategoryTableName, setName, clause);
         }
 
