@@ -7,7 +7,7 @@ namespace Geonote.Repositories
     {
         private static readonly string HintTableName = "Hint";
 
-        public static void AddNewHint(Hint hint, string? categoryID)
+        public static void AddNewHint(Hint hint, string? topicId)
         {
             if (hint.Id == null) { hint.Id = Guid.NewGuid().ToString(); }
 
@@ -15,8 +15,8 @@ namespace Geonote.Repositories
             var columnValues = $"\"{hint.Id}\", \"{hint.Name}\"";
 
         
-            if (categoryID != null)
-            { columnNames += ", CategoryId"; columnValues += $", \"{categoryID}\""; }
+            if (topicId != null)
+            { columnNames += ", TopicId"; columnValues += $", \"{topicId}\""; }
 
             if (hint.Location != null)
             { columnNames += ", LocationId"; columnValues += $", \"{hint.Location.Id}\""; }          
@@ -32,17 +32,17 @@ namespace Geonote.Repositories
             {
                 string name = sqlite_datareader.GetString(1);
 
-                string categoryId = string.Empty;
+                string topicId = string.Empty;
 
                 if (sqlite_datareader.GetValue(2) != DBNull.Value)
-                    categoryId = sqlite_datareader.GetString(2);
+                    topicId = sqlite_datareader.GetString(2);
 
                 SQLiteConnect.CloseConnections(sqlite_datareader);
                 return new Hint
                 {
                     Id = hintId,
                     Name = name,
-                    Category = new Categorу(categoryId)
+                    Topic = new Topic(topicId)
 
                 };
             }
@@ -58,15 +58,15 @@ namespace Geonote.Repositories
             {
                 string id = sqlite_datareader.GetString(0);
                 string name = sqlite_datareader.GetString(1);
-                string categoryId = string.Empty;
+                string topicId = string.Empty;
 
                 if (sqlite_datareader.GetValue(2) != DBNull.Value)
-                    categoryId = sqlite_datareader.GetString(2);
+                    topicId = sqlite_datareader.GetString(2);
                 allHints.Add(new Hint
                 {
                     Id = id,
                     Name = name,
-                    Category = new Categorу(categoryId)
+                    Topic = new Topic(topicId)
                 });
             }
             SQLiteConnect.CloseConnections(sqlite_datareader);

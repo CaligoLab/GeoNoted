@@ -13,7 +13,7 @@
         public Place()
         {
 
-        }*/
+        }
 
         public Place(string placeName)
         {

@@ -13,11 +13,6 @@ namespace Geonote.Models
 
         }
 
-        public Categorу(string Id)
-        {
-            this.Id = Id;
-        }
-
     }
 }
 

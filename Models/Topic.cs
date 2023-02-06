@@ -5,8 +5,12 @@
         public string Id { get; set; }
         public string Name { get; set; }
 
-        public Topic()
+        public Topic(string topicId)
         {
+            this.Id = topicId;
         }
-    }
+		public Topic()
+		{
+		}
+	}
 }
